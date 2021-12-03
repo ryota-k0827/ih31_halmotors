@@ -64,7 +64,7 @@ CREATE TABLE `buy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `car` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `evaluation` varchar(255),
   `outer_evaluation` varchar(255),
@@ -103,7 +103,7 @@ CREATE TABLE `car` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `purchase` (
-  `car_id` int PRIMARY KEY AUTO_INCREMENT,
+  `car_id` int PRIMARY KEY,
   `employee_id` int NOT NULL,
   `purchase_price` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
