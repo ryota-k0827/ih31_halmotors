@@ -1,12 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `ih31_halmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `ih31_halmotors`;
 
-CREATE TABLE `companies` (
-  `company_id` int PRIMARY KEY AUTO_INCREMENT,
-  `order_id` int NOT NULL,
-  `company_date` date NOT NULL
-);
-
 CREATE TABLE `employees` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -23,7 +17,6 @@ CREATE TABLE `customer` (
   `address3` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `credit_card` varchar(255),
   `birthday` date NOT NULL,
   `penalty` int DEFAULT 0,
   `del_flg` boolean NOT NULL DEFAULT false
@@ -38,9 +31,17 @@ CREATE TABLE `corporation` (
   `address3` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `credit_card` varchar(255),
   `penalty` int DEFAULT 0,
   `del_flg` boolean NOT NULL DEFAULT false
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE `card` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `person_id` int,
+  `number` int NOT NULL,
+  `expiration_date` date NOT NULL,
+  `security_code` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `listing` (
@@ -124,3 +125,5 @@ ALTER TABLE `listing` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 ALTER TABLE `purchase` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 
 ALTER TABLE `purchase` ADD FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+
+ALTER TABLE `card` ADD FOREIGN KEY (`person_id`) REFERENCES `customer` (`id`);
