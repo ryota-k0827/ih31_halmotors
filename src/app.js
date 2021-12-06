@@ -28,10 +28,14 @@ app.use(express.static(__dirname + '/public', {index: false}));
 app.use(express.urlencoded({ extended: true }));
 
 
-
-// トップページ
+// トップページ表示
 app.get("/", (req, res) => {
     res.render('index.ejs');
+});
+
+// ログインページ表示
+app.get("/login", (req, res) => {
+    res.render('login.ejs');
 });
 
 // ログイン（業者）
@@ -47,7 +51,7 @@ passport.use(new LocalStrategy(
             password
         ];
         connection.query(
-            'SELECT * FROM ?? WHERE mail = ? AND password = ?', values,
+            'SELECT * FROM ?? WHERE mail = ? AND password = ?;', values,
             (err, results) => {
                 if (err) {
                     console.log('Error in query: ' + err.stack);
@@ -76,10 +80,10 @@ passport.use(new LocalStrategy(
             password
         ];
         connection.query(
-            'SELECT * FROM ?? WHERE mail = ? AND password = ?', values,
+            'SELECT * FROM ?? WHERE mail = ? AND password = ?;', values,
             (err, results) => {
                 if (err) {
-                    console.log('Error in query: ' + err.stack);
+                    console.log('400 Bad Request: ' + err.stack);
                     return done(err); // DBエラー
                 }
                 if (results.length === 0) {
@@ -92,9 +96,51 @@ passport.use(new LocalStrategy(
     }
 ));
 
+// 車両検索ページ表示
+app.get("/search", (req, res) => {
+    res.render('search.ejs');
+});
+
 // 車両検索
+app.post("/search", (req, res) => {
+    let values = [
+        'car',
+        req.body.name
+    ];
+    connection.query(
+        'SELECT * FROM ?? WHERE name = ?;', values,
+        (err, results) => {
+            if (err) {
+                console.log('400 Bad Request: ' + err.stack);
+                res.status(400).send('400 Bad Request'); // DBエラー
+                return;
+            } else {
+                res.send(results); // 車両検索成功
+            }
+        }
+    );
+});
+
 
 // オークション一覧
+app.get("/auction", (req, res) => {
+    let values = [
+        'listing',
+        'car',
+    ];
+    connection.query(
+        'SELECT * FROM ?? JOIN ? ON listing.car_id = car.id;', values,
+        (err, results) => {
+            if (err) {
+                console.log('400 Bad Request: ' + err.stack);
+                res.status(400).send('400 Bad Request'); // DBエラー
+                return;
+            } else {
+                res.send(results); // オークション一覧取得成功
+            }
+        }
+    );
+});
 
 // オークション詳細
 
