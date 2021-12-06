@@ -136,13 +136,32 @@ app.get("/auction", (req, res) => {
                 res.status(400).send('400 Bad Request'); // DBエラー
                 return;
             } else {
-                res.send(results); // オークション一覧取得成功
+                res.send(results); // 取得成功
             }
         }
     );
 });
 
 // オークション詳細
+app.get("/auction:id", (req, res) => {
+    let values = [
+        'listing',
+        'car',
+        req.params.id
+    ];
+    connection.query(
+        'SELECT * FROM ?? JOIN ? ON listing.car_id = car.id WHERE listing.id = ?;', values,
+        (err, results) => {
+            if (err) {
+                console.log('400 Bad Request: ' + err.stack);
+                res.status(400).send('400 Bad Request'); // DBエラー
+                return;
+            } else {
+                res.send(results); // 取得成功
+            }
+        }
+    );
+});
 
 // 出品登録
 
