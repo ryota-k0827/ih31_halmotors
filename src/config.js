@@ -1,4 +1,4 @@
-exports.port = 80;
+exports.port = 9000;
 exports.dbConnection = {
     host: 'localhost',
     port: 3306,
