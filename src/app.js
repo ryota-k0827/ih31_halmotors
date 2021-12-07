@@ -123,7 +123,7 @@ app.post("/search", (req, res) => {
 
 
 // オークション一覧
-app.get("/auction", (req, res) => {
+app.get("/listing", (req, res) => {
     let values = [
         'listing',
         'car',
@@ -136,14 +136,14 @@ app.get("/auction", (req, res) => {
                 res.status(400).send('400 Bad Request'); // DBエラー
                 return;
             } else {
-                res.send(results); // 取得成功
+                res.render('listing_list.ejs', results); // 取得成功
             }
         }
     );
 });
 
 // オークション詳細
-app.get("/auction:id", (req, res) => {
+app.get("/listing:id", (req, res) => {
     let values = [
         'listing',
         'car',
@@ -157,13 +157,37 @@ app.get("/auction:id", (req, res) => {
                 res.status(400).send('400 Bad Request'); // DBエラー
                 return;
             } else {
-                res.send(results); // 取得成功
+                res.send('listing_car.ejs', results); // 取得成功
             }
         }
     );
 });
 
-// 出品登録
+// 出品登録ページ表示
+// app.get("/listing/add", (req, res) => {
+//     res.render('listing_add.ejs');
+// });
+
+// // 出品登録
+// app.post("/listing/add", (req, res) => {
+//     let values = [
+//         'listing',
+//         req.body.id
+//     ];
+//     connection.query(
+//         'INSERT INTO ?? (car_id) VALUES (?);', values,
+//         (err, results) => {
+//             if (err) {
+//                 console.log('400 Bad Request: ' + err.stack);
+//                 res.status(400).send('400 Bad Request'); // DBエラー
+//                 return;
+//             } else {
+//                 res.send('listing_add.ejs'); // 出品登録成功
+//             }
+//         }
+//     );
+// });
+
 
 // 出品済車両編集
 
