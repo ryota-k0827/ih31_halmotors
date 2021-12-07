@@ -6,114 +6,105 @@ CREATE TABLE `employees` (
   `name` varchar(255) NOT NULL,
   `password` char(30) NOT NULL,
   `del_flg` boolean NOT NULL DEFAULT false
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci, COMMENT='従業員';
 
 CREATE TABLE `customer` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `password` char(30) NOT NULL,
-  `address1` varchar(255) NOT NULL,
-  `address2` varchar(255) NOT NULL,
-  `address3` varchar(255) NOT NULL,
-  `tel` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `birthday` date NOT NULL,
-  `penalty` int DEFAULT 0,
-  `del_flg` boolean NOT NULL DEFAULT false
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `corporation` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `password` char(30) NOT NULL,
-  `address1` varchar(255) NOT NULL,
-  `address2` varchar(255) NOT NULL,
-  `address3` varchar(255) NOT NULL,
-  `tel` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `penalty` int DEFAULT 0,
-  `del_flg` boolean NOT NULL DEFAULT false
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
-
+  `category` ENUM('個人','法人') NOT NULL COMMENT '顧客区分',
+  `postal_code` int(7) NOT NULL COMMENT '郵便番号',
+  `address1` varchar(255) NOT NULL COMMENT '住所1',
+  `address2` varchar(255) NOT NULL COMMENT '住所2',
+  `address3` varchar(255) NOT NULL COMMENT '住所3',
+  `tel` varchar(255) NOT NULL COMMENT '電話番号',
+  `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
+  `birthday` date NOT NULL COMMENT '生年月日',
+  `penalty` int DEFAULT 0 COMMENT 'ペナルティ回数',
+  `del_flg` boolean NOT NULL DEFAULT false COMMENT '削除フラグ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='顧客';
 
 CREATE TABLE `card` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `person_id` int,
-  `number` int NOT NULL,
-  `expiration_date` date NOT NULL,
-  `security_code` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `person_id` int NOT NULL COMMENT '顧客ID',
+  `number` int NOT NULL COMMENT 'カード番号',
+  `expiration_date` date NOT NULL COMMENT '有効期限',
+  `security_code` int NOT NULL COMMENT 'セキュリティコード'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='カード';
 
 CREATE TABLE `listing` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `car_id` int NOT NULL,
-  `start_price` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `car_id` int NOT NULL COMMENT '車両ID',
+  `start_price` int NOT NULL COMMENT '開始価格',
+  `date` datetime NOT NULL COMMENT '出品日時'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='出品';
 
 CREATE TABLE `bid` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `listing_id` int,
-  `person_id` int,
-  `person_category` ENUM ('customer', 'corporation') NOT NULL,
-  `price` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `listing_id` int NOT NULL COMMENT '出品ID',
+  `person_id` int NOT NULL COMMENT '顧客ID',
+  `person_category` ENUM ('customer', 'corporation') NOT NULL COMMENT '顧客区分',
+  `price` int NOT NULL COMMENT '入札価格',
+  `date` datetime NOT NULL COMMENT '入札日時'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='入札';
 
 CREATE TABLE `buy` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `bid_id` int,
-  `memo` varchar(255)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `bid_id` int NOT NULL COMMENT '入札ID',
+  `memo` varchar(255) NOT NULL COMMENT '取引メモ',
+  `date` datetime NOT NULL COMMENT '取引日時',
+  `status` ENUM ('取引中', '取引終了') NOT NULL DEFAULT '取引中' COMMENT '取引状態',
+  `penalty` int DEFAULT 0 COMMENT 'ペナルティ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='落札';
 
 CREATE TABLE `car` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `evaluation` varchar(255),
-  `outer_evaluation` varchar(255),
-  `inner_evaluation` varchar(255),
-  `model_year` date,
-  `door` int,
-  `shape` varchar(255),
-  `grade` varchar(255),
-  `history` int,
-  `model` varchar(255),
-  `engine_size` int,
-  `fuel_type` ENUM ('レギュラー', 'ハイオク', '軽油'),
-  `inspection_day` date,
-  `mileage` int,
-  `outer_color` ENUM ('ホワイト', 'レッド', 'ブラック', 'イエロー', 'ブルー', 'グリーン', 'ブラウン', 'ツートン', 'シルバー'),
-  `inner_color` ENUM ('ホワイト', 'レッド', 'ブラック', 'イエロー', 'ブルー', 'グリーン', 'ブラウン', 'ツートン', 'シルバー'),
-  `color_number` varchar(255),
-  `identifier` varchar(255),
-  `shift_type` ENUM ('フロア', 'コラム', 'インパネ'),
-  `gear_type` varchar(255),
-  `ac_type` ENUM ('WAC', 'AAC', 'AC', 'C', '無'),
-  `ps` boolean DEFAULT false,
-  `pw` boolean DEFAULT false,
-  `aw` boolean DEFAULT false,
-  `sr` boolean DEFAULT false,
-  `tire` boolean DEFAULT false,
-  `leather_sheet` boolean DEFAULT false,
-  `ab` boolean DEFAULT false,
-  `tv` boolean DEFAULT false,
-  `navi` boolean DEFAULT false,
-  `rear_spo` boolean DEFAULT false,
-  `manual` boolean DEFAULT false,
-  `warranty` boolean DEFAULT false,
-  `other_option` longtext,
-  `information` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) NOT NULL COMMENT '車両名',
+  `evaluation` varchar(255) COMMENT '車両評価',
+  `outer_evaluation` varchar(255) COMMENT '外装評価',
+  `inner_evaluation` varchar(255) COMMENT '内装評価',
+  `model_year` date NOT NULL COMMENT '年式',
+  `door` int COMMENT 'ドア数',
+  `shape` varchar(255) COMMENT '車体形状',
+  `grade` varchar(255) COMMENT '車体グレード',
+  `history` int COMMENT '車歴',
+  `model` varchar(255) COMMENT '型式',
+  `engine_size` int COMMENT '排気量',
+  `fuel_type` ENUM ('レギュラー', 'ハイオク', '軽油') COMMENT '燃料',
+  `inspection_day` date COMMENT '車検日',
+  `mileage` int COMMENT '走行距離',
+  `outer_color` ENUM ('ホワイト', 'レッド', 'ブラック', 'イエロー', 'ブルー', 'グリーン', 'ブラウン', 'ツートン', 'シルバー') COMMENT '外装色',
+  `inner_color` ENUM ('ホワイト', 'レッド', 'ブラック', 'イエロー', 'ブルー', 'グリーン', 'ブラウン', 'ツートン', 'シルバー') COMMENT '内装色',
+  `color_number` varchar(255) COMMENT '色数',
+  `identifier` varchar(255) COMMENT '車体番号',
+  `shift_type` ENUM ('フロア', 'コラム', 'インパネ') COMMENT 'シフトタイプ',
+  `gear_type` varchar(255) COMMENT 'ギアタイプ',
+  `ac_type` ENUM ('WAC', 'AAC', 'AC', 'C', '無') COMMENT 'エアコンタイプ',
+  `ps` boolean DEFAULT false COMMENT 'パワーステアリング',
+  `pw` boolean DEFAULT false COMMENT 'パワーウインド',
+  `aw` boolean DEFAULT false COMMENT 'アルミホイール',
+  `sr` boolean DEFAULT false COMMENT 'サンルーフ',
+  `tire` boolean DEFAULT false COMMENT 'タイヤ',
+  `leather_sheet` boolean DEFAULT false COMMENT '本革シート',
+  `ab` boolean DEFAULT false COMMENT 'エアバック',
+  `tv` boolean DEFAULT false COMMENT 'テレビ',
+  `navi` boolean DEFAULT false COMMENT 'ナビ',
+  `rear_spo` boolean DEFAULT false COMMENT 'リアスポイラー',
+  `manual` boolean DEFAULT false COMMENT '取説',
+  `warranty` boolean DEFAULT false COMMENT '保証書',
+  `other_option` longtext COMMENT 'その他車両情報',
+  `information` longtext COMMENT '検査員メモ'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='車両';
 
 CREATE TABLE `purchase` (
-  `car_id` int PRIMARY KEY,
-  `employee_id` int NOT NULL,
-  `purchase_price` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci;
+  `car_id` int PRIMARY KEY COMMENT '車両ID',
+  `employee_id` int NOT NULL COMMENT '従業員ID',
+  `purchase_price` int NOT NULL COMMENT '仕入価格'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='仕入管理';
 
 ALTER TABLE `bid` ADD FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`);
 
 ALTER TABLE `bid` ADD FOREIGN KEY (`person_id`) REFERENCES `customer` (`id`);
-
-ALTER TABLE `bid` ADD FOREIGN KEY (`person_id`) REFERENCES `corporation` (`id`);
 
 -- ALTER TABLE `bid` ADD FOREIGN KEY (`id`) REFERENCES `buy` (`bid_id`);
 ALTER TABLE `buy` ADD FOREIGN KEY (`bid_id`) REFERENCES `bid` (`id`);
