@@ -73,9 +73,8 @@ passport.use(new LocalStrategy(
                 }
                 if (results.length === 0) {
                     return done(null, false); // 認証失敗
-                } else {
-                    return done(null, results[0]); // 認証成功
                 }
+                return done(null, results[0]); // 認証成功
             }
         );
     }
