@@ -33,39 +33,15 @@ app.get("/", (req, res) => {
     res.render('index.ejs');
 });
 
-// ログインページ表示
-app.get("/login", (req, res) => {
-    res.render('login.ejs');
+// ユーザー登録画面表示
+app.get("/signup", (req, res) => {
+    res.render('client/user_register.ejs');
 });
 
-// ログイン（業者）
-passport.use(new LocalStrategy(
-    {
-        usernameField: 'mail',
-        passwordField: 'password'
-    },
-    function(mail, password, done) {
-        let values = [
-            'corporation',
-            mail,
-            password
-        ];
-        connection.query(
-            'SELECT * FROM ?? WHERE mail = ? AND password = ?;', values,
-            (err, results) => {
-                if (err) {
-                    console.log('Error in query: ' + err.stack);
-                    return done(err); // DBエラー
-                }
-                if (results.length === 0) {
-                    return done(null, false); // 認証失敗
-                } else {
-                    return done(null, results[0]); // 認証成功
-                }
-            }
-        );
-    }
-));
+// ログインページ表示
+app.get("/login", (req, res) => {
+    res.render('client/user_login.ejs');
+});
 
 // ログイン（個人）
 passport.use(new LocalStrategy(
@@ -161,6 +137,11 @@ app.get("/listing:id", (req, res) => {
             }
         }
     );
+});
+
+// 管理者ログイン画面表示
+app.get("/admin", (req, res) => {
+    res.render('manager/manager_login.ejs');
 });
 
 // 出品登録ページ表示
