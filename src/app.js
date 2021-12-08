@@ -9,6 +9,13 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const mysql = require("mysql");
 const connection = mysql.createConnection(config.dbConnection);
+const session = require("express-session");
+
+app.use(session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.set('view engine', 'ejs');
 
@@ -46,8 +53,10 @@ app.get("/login", (req, res) => {
 // ログイン（個人）
 passport.use(new LocalStrategy(
     {
+        // フィールド名の指定
         usernameField: 'mail',
-        passwordField: 'password'
+        passwordField: 'password',
+        session: false,
     },
     function(mail, password, done) {
         let values = [
@@ -71,6 +80,12 @@ passport.use(new LocalStrategy(
         );
     }
 ));
+
+// ログアウト
+app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
 
 // 車両検索ページ表示
 app.get("/search", (req, res) => {
