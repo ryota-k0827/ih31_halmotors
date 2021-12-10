@@ -30,8 +30,8 @@ connection.connect((err) => {
     console.log("Connected to database as id " + connection.threadId);
 });
 
-app.use(express.static(__dirname + "/views", {index: false}));
-app.use(express.static(__dirname + '/public', {index: false}));
+app.use(express.static(__dirname + "/views", { index: false }));
+app.use(express.static(__dirname + '/public', { index: false }));
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -58,7 +58,7 @@ passport.use(new LocalStrategy(
         passwordField: 'password',
         session: false,
     },
-    function(mail, password, done) {
+    function (mail, password, done) {
         let values = [
             'customer',
             mail,
@@ -205,13 +205,12 @@ app.get("/admin", (req, res) => {
 
 // 従業員削除
 
-// ユーザー登録（業者)
+// ユーザー登録
 
-// ユーザー退会（業者)
-
-// ユーザー登録（個人）
-
-// ユーザー退会（個人）
+// ユーザー退会
+app.get("/userDelete", (req, res) => {
+    res.render('client/user_delete.ejs');
+});
 
 
 
