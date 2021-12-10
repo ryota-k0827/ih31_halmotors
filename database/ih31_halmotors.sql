@@ -14,9 +14,9 @@ CREATE TABLE `customer` (
   `password` char(30) NOT NULL,
   `category` ENUM('個人','法人') NOT NULL COMMENT '顧客区分',
   `postal_code` int(7) NOT NULL COMMENT '郵便番号',
-  `address1` varchar(255) NOT NULL COMMENT '住所1',
-  `address2` varchar(255) NOT NULL COMMENT '住所2',
-  `address3` varchar(255) NOT NULL COMMENT '住所3',
+  `address1` varchar(255) NOT NULL COMMENT '都道府県',
+  `address2` varchar(255) NOT NULL COMMENT '市町村',
+  `address3` varchar(255) NOT NULL COMMENT '番地',
   `tel` varchar(255) NOT NULL COMMENT '電話番号',
   `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
   `birthday` date NOT NULL COMMENT '生年月日',
@@ -27,7 +27,7 @@ CREATE TABLE `customer` (
 CREATE TABLE `card` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `person_id` int NOT NULL COMMENT '顧客ID',
-  `number` int NOT NULL COMMENT 'カード番号',
+  `number` varchar(255) NOT NULL COMMENT 'カード番号',
   `expiration_date` date NOT NULL COMMENT '有効期限',
   `security_code` int NOT NULL COMMENT 'セキュリティコード'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='カード';
@@ -43,7 +43,6 @@ CREATE TABLE `bid` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `listing_id` int NOT NULL COMMENT '出品ID',
   `person_id` int NOT NULL COMMENT '顧客ID',
-  `person_category` ENUM ('customer', 'corporation') NOT NULL COMMENT '顧客区分',
   `price` int NOT NULL COMMENT '入札価格',
   `date` datetime NOT NULL COMMENT '入札日時'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='入札';
@@ -63,7 +62,7 @@ CREATE TABLE `car` (
   `evaluation` varchar(255) COMMENT '車両評価',
   `outer_evaluation` varchar(255) COMMENT '外装評価',
   `inner_evaluation` varchar(255) COMMENT '内装評価',
-  `model_year` date NOT NULL COMMENT '年式',
+  `model_year` year NOT NULL COMMENT '年式',
   `door` int COMMENT 'ドア数',
   `shape` varchar(255) COMMENT '車体形状',
   `grade` varchar(255) COMMENT '車体グレード',
