@@ -10,6 +10,7 @@ const passportLocal = require("passport-local");
 const mysql = require("mysql");
 const connection = mysql.createConnection(config.dbConnection);
 const session = require("express-session");
+const socketio = require("socket.io")(server);
 
 app.use(session({
     secret: "secret",
@@ -72,8 +73,10 @@ passport.use(new LocalStrategy(
                     return done(err); // DBエラー
                 }
                 if (results.length === 0) {
+                    console.log("認証失敗");
                     return done(null, false); // 認証失敗
                 }
+                console.log("認証成功");
                 return done(null, results[0]); // 認証成功
             }
         );
@@ -82,7 +85,7 @@ passport.use(new LocalStrategy(
 
 app.post("/login",
     passport.authenticate('local', {
-        successRedirect: '/',
+        // successRedirect: '/',
         failureRedirect: '/login',
         session: false
     }
