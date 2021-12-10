@@ -5,7 +5,7 @@ INSERT INTO customer( name, password, category, postal_code, address1, address2,
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 大愛", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "竹内 杏奈", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "英語 シャベル", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "金子 凌大愛", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "金子 凌大", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "村田 優真", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "木村 元保", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
 INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 商店", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
@@ -77,11 +77,10 @@ INSERT INTO listing (car_id, start_price, date) VALUES(3, 1000000, "2021/12/02")
 INSERT INTO bid (listing_id, person_id, price, date) VALUES(1, 3, 810000, "2021/12/08 15:21:31");
 INSERT INTO bid (listing_id, person_id, price, date) VALUES(2, 3, 850000, "2021/12/08 15:22:31");
 INSERT INTO bid (listing_id, person_id, price, date) VALUES(3, 3, 890000, "2021/12/08 15:23:31");
-INSERT INTO bid (listing_id, person_id, price, date) VALUES(4, 3, 950000, "2021/12/08 15:24:31");
 INSERT INTO bid (listing_id, person_id, price, date) VALUES(1, 3, 1000000, "2021/12/08 15:25:58");
 
 -- buy 
 INSERT INTO buy (bid_id, memo, date, status) VALUES(1, "100万になったｗｗ", "2021/12/08 15:25:58", "取引中");
 
---purchase
+-- purchase
 INSERT INTO purchase (car_id, employee_id, purchase_price) VALUES(1, 1, 1000000);
