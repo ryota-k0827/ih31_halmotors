@@ -1,28 +1,28 @@
 -- customer
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "山田 忠明", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "田中 隆", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "山崎 ホウセイ", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 大愛", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "竹内 杏奈", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "英語 シャベル", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "金子 凌大", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "村田 優真", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "木村 元保", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 商店", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "一蘭 次郎", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
-INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "ラーメン JET", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "cdRjCaVyu@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "山田 忠明", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "aaa@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "田中 隆", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "bbb@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "山崎 ホウセイ", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "ccc@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 大愛", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "ddd@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "竹内 杏奈", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "eee@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "英語 シャベル", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "fff@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "金子 凌大", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "ggg@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "村田 優真", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "hhh@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "木村 元保", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "iii@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "町田 商店", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "jjj@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "一蘭 次郎", "password", 1, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "kkk@sample.co.jp", "1992/3/16", 0, FALSE) ;
+INSERT INTO customer( name, password, category, postal_code, address1, address2, address3, tel, mail, birthday, penalty, del_flg) VALUES ( "ラーメン JET", "password", 2, 5471111, "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "lll@sample.co.jp", "1992/3/16", 0, FALSE) ;
 
 -- employees
-INSERT INTO employees( name, password, del_flg) VALUES ( "瓜生 静香", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "小田原 亜子", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "東海林 良之", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "安保 松男", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "寺井 翔平", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "金川 葉月", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "新美 勝哉", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "表 清信", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "柏崎 辰男", "pass", FALSE) ;
-INSERT INTO employees( name, password, del_flg) VALUES ( "飯塚 昌", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "瓜生 静香", "emp1@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "小田原 亜子", "emp2@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "東海林 良之", "emp3@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "安保 松男", "emp4@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "寺井 翔平", "emp5@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "金川 葉月", "emp6@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "新美 勝哉", "emp7@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "表 清信", "emp8@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "柏崎 辰男", "emp9@sample.com", "pass", FALSE) ;
+INSERT INTO employees( name, mail, password, del_flg) VALUES ( "飯塚 昌", "emp10@sample.com", "pass", FALSE) ;
 
 -- card
 INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(1, "0987654321091234", "2021/03/01", 313);

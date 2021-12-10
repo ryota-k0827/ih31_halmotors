@@ -3,9 +3,10 @@ USE `ih31_halmotors`;
 
 CREATE TABLE `employees` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `password` char(30) NOT NULL,
-  `del_flg` boolean NOT NULL DEFAULT false
+  `name` varchar(255) NOT NULL COMMENT '従業員名',
+  `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
+  `password` char(30) NOT NULL COMMENT 'パスワード',
+  `del_flg` boolean NOT NULL DEFAULT false COMMENT '削除フラグ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci, COMMENT='従業員';
 
 CREATE TABLE `customer` (
@@ -15,13 +16,8 @@ CREATE TABLE `customer` (
   `category` ENUM('個人','法人') NOT NULL COMMENT '顧客区分',
   `postal_code` int(7) NOT NULL COMMENT '郵便番号',
   `address1` varchar(255) NOT NULL COMMENT '都道府県',
-<<<<<<< HEAD
-  `address2` varchar(255) NOT NULL COMMENT '市区町村',
-  `address3` varchar(255) NOT NULL COMMENT 'マンション名',
-=======
   `address2` varchar(255) NOT NULL COMMENT '市町村',
   `address3` varchar(255) NOT NULL COMMENT '番地',
->>>>>>> test_data
   `tel` varchar(255) NOT NULL COMMENT '電話番号',
   `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
   `birthday` date NOT NULL COMMENT '生年月日',
