@@ -80,6 +80,20 @@ passport.use(new LocalStrategy(
     }
 ));
 
+app.post("/login",
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        session: false
+    }
+    ),
+    function(req, res) {
+        console.log(req.user);
+        res.render('index.ejs', {data: req.user});
+    }
+);
+
+
 // ログアウト
 app.get("/logout", (req, res) => {
     req.logout();
