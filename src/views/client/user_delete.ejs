@@ -4,8 +4,14 @@
     <body>
         <script>
             function DeleteAlert() {
-                alert("本当に退会しますか？？");
-                location.href='signup';
+                var result = window.confirm("本当に退会しますか？？");
+                if (result) {
+                    console.log('OKがクリックされました');
+                    location.href = 'signup';
+                }
+                else {
+                    console.log('キャンセルがクリックされました');
+                }
             }
         </script>
         <section class="font-sans text-center my-8 px-8">
@@ -16,5 +22,5 @@
                 onclick="DeleteAlert()">退会する</button>
         </section>
     </body>
-    
+
     <%- include('../partials/footer.ejs') %>
