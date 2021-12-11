@@ -47,6 +47,31 @@ app.get("/signup", (req, res) => {
     res.render('client/user_register.ejs');
 });
 
+// ユーザー登録処理
+app.post("/signup", (req, res) => {
+    let user = {
+        name: req.body.name,
+        password: req.body.password,
+        category: req.body.category,
+        postal_code: req.body.postal_code,
+        address1: req.body.address1,
+        address2: req.body.address2,
+        address3: req.body.address3,
+        tel: req.body.tel,
+        mail: req.body.mail,
+        birthday: req.body.birthday
+    };
+    connection.query("INSERT INTO customer SET ?", user, (err, result) => {
+        if (err) {
+            console.log("Error: " + err.stack);
+            return;
+        }
+        console.log("Inserted " + result.affectedRows + " rows");
+    });
+    res.redirect("/");
+});
+
+
 // ログインページ表示
 app.get("/login", (req, res) => {
     res.render('client/user_login.ejs');
