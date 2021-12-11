@@ -206,6 +206,64 @@ app.get("/admin", (req, res) => {
     res.render('manager/manager_login.ejs');
 });
 
+// 車両登録画面表示
+app.get("/admin/car_register", (req, res) => {
+    res.render('manager/car_register.ejs');
+});
+
+// 車両登録処理
+app.post("/admin/car_register", (req, res) => {
+    let car = {
+        name: req.body.name,
+        maker: req.body.maker,
+        evaluation: req.body.evaluation,
+        outer_evaluation: req.body.outer_evaluation,
+        inner_evaluation: req.body.inner_evaluation,
+        model_year: req.body.model_year,
+        door: req.body.door,
+        shape: req.body.shape,
+        grade: req.body.grade,
+        history: req.body.history,
+        model: req.body.model,
+        engine_size: req.body.engine_size,
+        fuel_type: req.body.fuel_type,
+        inspection_day: req.body.inspection_day,
+        mileage: req.body.mileage,
+        outer_color: req.body.outer_color,
+        inner_color: req.body.inner_color,
+        color_number: req.body.color_number,
+        identifier: req.body.identifier,
+        shift_type: req.body.shift_type,
+        gear_type: req.body.gear_type,
+        ac_type: req.body.ac_type,
+        ps: req.body.ps,
+        pw: req.body.pw,
+        aw: req.body.aw,
+        sr: req.body.sr,
+        tire: req.body.tire,
+        leather_sheet: req.body.leather_sheet,
+        ab: req.body.ab,
+        tv: req.body.tv,
+        navi: req.body.navi,
+        rear_spo: req.body.rear_spo,
+        manual: req.body.manual,
+        warranty: req.body.warranty,
+        other_option: req.body.other_option,
+        information: req.body.information
+    };
+    connection.query(
+        'INSERT INTO car SET ?;', car,
+        (err, result) => {
+            if (err) {
+                console.log('400 Bad Request: ' + err.stack);
+                res.status(400).send('400 Bad Request'); // DBエラー
+                return;
+            }
+            console.log("Inserted " + result.affectedRows + " rows");
+        });
+        res.redirect('/admin/car_register.ejs'); // 登録成功
+});
+
 // 出品登録ページ表示
 // app.get("/listing/add", (req, res) => {
 //     res.render('listing_add.ejs');
