@@ -60,6 +60,7 @@ CREATE TABLE `buy` (
 CREATE TABLE `car` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT '車両名',
+  `maker` varchar(255) NOT NULL COMMENT 'メーカー',
   `evaluation` varchar(255) COMMENT '車両評価',
   `outer_evaluation` varchar(255) COMMENT '外装評価',
   `inner_evaluation` varchar(255) COMMENT '内装評価',
