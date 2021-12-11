@@ -21,6 +21,7 @@ app.use(session({
 app.set('view engine', 'ejs');
 
 app.use(passport.initialize());
+// app.use(passport.session);
 let LocalStrategy = passportLocal.Strategy;
 
 connection.connect((err) => {
@@ -87,14 +88,19 @@ app.post("/login",
     passport.authenticate('local', {
         // successRedirect: '/',
         failureRedirect: '/login',
-        // session: true
+        session: false
     }
     ),
     function(req, res) {
         console.log(req.user);
-        res.render('index.ejs', {data: req.user});
+        res.render('client/login_index.ejs', {data: req.user});
+        // res.send({data: req.user});
     }
 );
+
+// app.get("/top", (req, res) => {
+//     res.render('client/login_index.ejs');
+// });
 
 
 // ログアウト
