@@ -4,15 +4,15 @@
     <script>
         function notNull() {
             // Get the value of the input field with id="numb"
-            var result = document.getElementById("numb").value;
+            var result = document.getElementById("name").value;
             // If x is Not a Number or less than one or greater than 10
             var text;
-            if (result) {
-                text = "Input not valid";
+            if (result == "") {
+                text = "車両名が空白です。";
             } else {
-                text = "Input OK";
+                text = "OK";
             }
-            document.getElementById("demo").innerHTML = text;
+            document.getElementById("null").innerHTML = text;
         }
     </script>
 
@@ -116,12 +116,21 @@
             </div>
         </section>
         <form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+
             <div class="relative border rounded mb-4 shadow appearance-none label-floating">
                 <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="name" type="text" placeholder="車両名を入力してください" onclick="notNull()">
                 <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="name">
-                    車両名を入力してください
+                </label>
+                <p id="null"></p>
+            </div>
+
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="year" type="text" placeholder="年式を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="year">
+                    年式を入力してください
                 </label>
             </div>
+
             <div class="relative border rounded mb-4 shadow appearance-none label-floating">
                 <select name="fuel"
                     class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -131,6 +140,7 @@
                     <option value="3">軽油</option>
                 </select>
             </div>
+
             <div class="flex items-center justify-between">
                 <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
                     Sign In
@@ -139,6 +149,7 @@
                     Forgot Password?
                 </a>
             </div>
+
         </form>
     </body>
     <%- include('../partials/footer.ejs') %>
