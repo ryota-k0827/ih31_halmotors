@@ -265,29 +265,9 @@ app.post("/admin/car_register", (req, res) => {
 });
 
 // 出品登録ページ表示
-// app.get("/listing/add", (req, res) => {
-//     res.render('listing_add.ejs');
-// });
-
-// // 出品登録
-// app.post("/listing/add", (req, res) => {
-//     let values = [
-//         'listing',
-//         req.body.id
-//     ];
-//     connection.query(
-//         'INSERT INTO ?? (car_id) VALUES (?);', values,
-//         (err, results) => {
-//             if (err) {
-//                 console.log('400 Bad Request: ' + err.stack);
-//                 res.status(400).send('400 Bad Request'); // DBエラー
-//                 return;
-//             } else {
-//                 res.send('listing_add.ejs'); // 出品登録成功
-//             }
-//         }
-//     );
-// });
+app.get("/admin/listing_register", (req, res) => {
+    res.render('car_listiong.ejs');
+});
 
 
 // 出品済車両編集
