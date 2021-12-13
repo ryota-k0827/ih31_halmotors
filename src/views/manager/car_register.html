@@ -1,1 +1,244 @@
-<h1>車両登録画面</h1>
+<!-- 車両登録画面 -->
+<%- include('../partials/header.ejs') %>
+    <h1>絞り込み検索の画面だよ。</h1>
+
+    <script>
+        function notNull() {
+            // Get the value of the input field with id="numb"
+            var result = document.getElementById("name").value;
+            // If x is Not a Number or less than one or greater than 10
+            var text;
+            if (result == "") {
+                text = "車両名が空白です。";
+            } else {
+                text = "OK";
+            }
+            document.getElementById("null").innerHTML = text;
+        }
+    </script>
+
+    <body>
+        <!-- メーカー名 -->
+        <section class="my-8 font-sans container m-auto max-w-xl ">
+            <div class="text-center">
+                <h1 class="my-4 font-medium">条件を設定してください</h1>
+                <p class="leading-normal mb-4 max-w-sm m-auto">please show your asshole</p>
+            </div>
+            <div class="flex flex-col sm:flex-row flex-wrap my-8">
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 border-gray-300 border-r border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">TOYOTA</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal px-6 hidden hover:block">Donec nec justo
+                        eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim
+                        pellentesque felis.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">LEXUS</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Praesent dapibus, neque
+                        id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat
+                        volutpat.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">NISSAN</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Phasellus ultrices nulla
+                        quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">三菱</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Donec nec justo eget
+                        felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque
+                        felis.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">HONDA</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Lorem ipsum dolor sit
+                        amet, consectetuer adipiscing elit.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300  border-b hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">MAZDA</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Donec odio. Quisque
+                        volutpat mattis eros. Nullam malesuada erat ut turpis. </p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 border-gray-300 border-r hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">SUBARU</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal px-6 hidden hover:block">Donec nec justo
+                        eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim
+                        pellentesque felis.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">SUZUKI</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Praesent dapibus, neque
+                        id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat
+                        volutpat.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">DAIHATSU</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Phasellus ultrices nulla
+                        quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">ISUZU</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Donec nec justo eget
+                        felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque
+                        felis.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8  border-gray-300 border-r hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">三岡自動車</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Lorem ipsum dolor sit
+                        amet, consectetuer adipiscing elit.</p>
+                </div>
+                <div
+                    class="w-full sm:w-1/4 md:w-1/6 flex flex-col items-center justify-center h-48 md:h-64 p-8 border-gray-300  hover:shadow-md hover:border-0 bg-white hover:transform-scale-subtle transition-normal hover:show-child">
+                    <div class="w-12 h-12 rounded-full bg-gray-300" alt=""></div>
+                    <h3 class="mt-4 mb-1">BMW</h3>
+                    <p class="mt-4 text-center text-gray-700 leading-normal hidden hover:block">Donec odio. Quisque
+                        volutpat mattis eros. Nullam malesuada erat ut turpis. </p>
+                </div>
+            </div>
+        </section>
+        <form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+            <!-- 車両名 -->
+            <p>車両名</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="name" type="text"
+                    placeholder="車両名を入力してください" onclick="notNull()">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="name">
+                </label>
+                <p id="null"></p>
+            </div>
+            <!-- 年式 -->
+            <p>年式</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="year1" type="text"
+                    placeholder="年式を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="year1">
+                    年式を入力してください
+                </label>
+            </div>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="year2" type="text"
+                    placeholder="年式を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="year2">
+                    年式を入力してください
+                </label>
+            </div>
+            <!-- 型式 -->
+            <p>型式</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="model" type="text"
+                    placeholder="年式を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="model">
+                    型式を入力してください
+                </label>
+            </div>
+            <!-- 排気量 -->
+            <p>排気量</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="engine_size1" type="text"
+                    placeholder="排気量を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+                    for="engine_size1">
+                    排気量を入力してください
+                </label>
+            </div>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="engine_size2" type="text"
+                    placeholder="排気量を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+                    for="engine_size2">
+                    排気量を入力してください
+                </label>
+            </div>
+            <!-- 油種 -->
+            <p>油種</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <select name="fuel"
+                    class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <option>燃料を選択してください</option>
+                    <option value="1">レギュラー</option>
+                    <option value="2">ハイオク</option>
+                    <option value="3">軽油</option>
+                </select>
+            </div>
+            <!-- 走行距離 -->
+            <p>走行距離</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="mileage1" type="text"
+                    placeholder="走行距離を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="mileage1">
+                    走行距離を入力してください
+                </label>
+            </div>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="mileage2" type="text"
+                    placeholder="走行距離を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="mileage2">
+                    走行距離を入力してください
+                </label>
+            </div>
+            <!-- 外装色 -->
+            <p>外装色</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="outer_color" type="text"
+                    placeholder="外装色を入力してください">
+                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+                    for="outer_color">
+                    外装色を入力してください
+                </label>
+            </div>
+            <!-- ギアタイプ -->
+            <p>ギアタイプ</p>
+            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+                <select name="fuel"
+                    class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <option>ギアタイプを選択してください</option>
+                    <option value="MT">MT</option>
+                    <option value="AT">AT</option>
+                </select>
+            </div>
+            <!-- その他絞り込み -->
+            <p>その他絞り込み</p>
+            <div class="etc">
+                <div class="flex items-center mr-4 mb-2">
+                    <input type="checkbox" id="ps" name="A3-confirmation" value="ps" />
+                    <label for="ps" class="select-none">パワステ</label>
+                </div>
+                <div class="flex items-center mr-4 mb-2">
+                    <input type="checkbox" id="pw" name="A3-confirmation" value="pw" />
+                    <label for="pw" class="select-none">パワーウィンドウ</label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
+                    Sign In
+                </button>
+                <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="#">
+                    Forgot Password?
+                </a>
+            </div>
+
+        </form>
+    </body>
+    <%- include('../partials/footer.ejs') %>
