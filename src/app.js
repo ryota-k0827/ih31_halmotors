@@ -300,6 +300,10 @@ app.get('/user_delete:id/result', (req, res) => {
     res.render('client/user_delete.ejs');
 });
 
+//マイページ（UPDATE)
+app.get('/user_update', (req, res) => {
+    res.render('client/user_update.ejs');
+});
 
 
 

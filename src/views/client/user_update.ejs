@@ -1,0 +1,97 @@
+<!-- ユーザー情報確認画面(参照・更新) -->
+<%- include('../partials/header.ejs') %>
+<form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+    <!-- ユーザー名 -->
+    <p>ユーザー名</p>
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+      <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="username" type="text" placeholder="Username">
+      <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="username">
+        Username
+      </label>
+    </div>
+    <!-- パスワード -->
+    <p>パスワード</p>
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+      <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password" type="password" placeholder="Password">
+      <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">
+        Password
+      </label>
+    </div>
+    <p>確認用</p>
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password-confirmation" type="password" placeholder="Password-confirmation">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password-confirmation">
+          Password-confirmation
+        </label>
+      </div>
+    <!-- 電話番号 -->
+    <p>電話番号 ハイフンなし</p>
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="tel" type="text" placeholder="Tel">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="tel">
+          Tel
+        </label>
+      </div>
+      <!-- メールアドレス -->
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="mail" type="text" placeholder="Mail">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="mail">
+          Mail
+        </label>
+      </div>
+      <!-- 誕生日 -->
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="birthday" type="text" placeholder="Birthday">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="birthday">
+          Birthday
+        </label>
+      </div>
+      <p>郵便番号</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="postalcode" type="text" placeholder="Postalcode">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="postalcode">
+          Postalcode
+        </label>
+      </div>
+      <p>住所１</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="prefectures" type="text" placeholder="Prefectures">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="prefectures">
+            Prefectures
+        </label>
+      </div>
+      <p>住所２</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="municipalities" type="text" placeholder="Municipalities">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="municipalities">    
+            Municipalities
+        </label>
+      </div>
+      <p>住所３</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="apartment" type="text" placeholder="Apartment">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="apartment">    
+            Apartment
+        </label>
+      </div>
+      <!-- クレジットカード -->
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="number" type="text" placeholder="Cash-card-number">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="number">    
+            Cash-card-number
+        </label>
+      </div>
+      <!-- セキュリティコード -->
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="security_code" type="text" placeholder="Security_code">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="security_code">    
+            Security_code
+        </label>
+      </div>
+    <div class="flex items-center justify-between">
+      <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
+      更新
+      </button>
+    </div>
+  </form>
+<%- include('../partials/footer.ejs') %>
