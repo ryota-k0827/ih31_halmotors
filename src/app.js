@@ -277,7 +277,6 @@ app.get("/admin/listing_register", (req, res) => {
     res.render('car_listiong.ejs');
 });
 
-
 // 出品済車両編集
 
 
