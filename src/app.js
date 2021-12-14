@@ -251,7 +251,11 @@ app.post("/admin/car_register", (req, res) => {
         other_option: req.body.other_option,
         information: req.body.information
     };
-    
+    for (var key in car) {
+        if (car[key] === '') {
+            car[key] = null;
+        }
+    }
     console.log(car);
     connection.query(
         'INSERT INTO car SET ?;', car,
