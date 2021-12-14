@@ -159,6 +159,12 @@ app.post("/search", (req, res) => {
     );
 });
 
+// 車両詳細検索ページ表示
+app.get("/detail", (req, res) => {
+    res.render('client/detail_search.ejs');
+});
+
+
 
 // オークション一覧
 app.get("/listing", (req, res) => {
