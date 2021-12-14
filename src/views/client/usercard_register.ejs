@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+<form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"></form>
+ <!--カード登録-->
+    <!--カード番号-->
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="number" type="text" placeholder="Cash-card-number">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="number">    
+            Cash-card-number
+        </label>
+    </div>
+     <!--セキュリティー番号-->
+    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="security_code" type="text" placeholder="Security_code">
+        <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="security_code">    
+            Security_code
+        </label>
+    </div>
+    <div class="flex items-center justify-between">
+        <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
+        登録する
+        </button>
+    </div>
+</form>
+<%- include('../partials/footer.ejs') %>
