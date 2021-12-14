@@ -159,6 +159,12 @@ app.post("/search", (req, res) => {
     );
 });
 
+// 車両詳細検索ページ表示
+app.get("/detail", (req, res) => {
+    res.render('client/detail_search.ejs');
+});
+
+
 
 // オークション一覧
 app.get("/listing", (req, res) => {
@@ -274,7 +280,6 @@ app.post("/admin/car_register", (req, res) => {
 app.get("/admin/listing_register", (req, res) => {
     res.render('car_listiong.ejs');
 });
-
 
 // 出品済車両編集
 

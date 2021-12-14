@@ -3,9 +3,15 @@
 
     <body>
         <script>
-            function DeleteAlert() {
-                alert("本当に退会しますか？？");
-                location.href=location.pathname+'/result';
+            function DeleteConfirm() {
+                var result = window.confirm("本当に退会しますか？？");
+                if (result) {
+                    console.log('OKがクリックされました');
+                    location.href = 'signup';
+                }
+                else {
+                    console.log('キャンセルがクリックされました');
+                }
             }
         </script>
         <section class="font-sans text-center my-8 px-8">
@@ -13,8 +19,8 @@
             <p class="text-gray-700 mt-2 mb-6">この処理はやり直す事が出来ません</p>
             <button
                 class="bg-black hover:bg-gray-900 text-white hover:text-white py-3 px-6 uppercase text-xs tracking-wide"
-                onClick=DeleteAlert()>退会する</button>
+                onclick="DeleteConfirm()">退会する</button>
         </section>
     </body>
-    
+
     <%- include('../partials/footer.ejs') %>
