@@ -251,6 +251,8 @@ app.post("/admin/car_register", (req, res) => {
         other_option: req.body.other_option,
         information: req.body.information
     };
+    
+    console.log(car);
     connection.query(
         'INSERT INTO car SET ?;', car,
         (err, result) => {
@@ -280,7 +282,21 @@ app.get("/admin/listing_register", (req, res) => {
 // ユーザー登録
 
 // ユーザー退会
-app.get("/userDelete", (req, res) => {
+app.get('/user_delete:id', (req, res) => {
+    res.render('client/user_delete.ejs');
+});
+app.get('/user_delete:id/result', (req, res) => {
+    let user_id = req.params.id;
+    connection.query(
+        'DELETE FROM user WHERE id = ?;', user_id,
+        (err, result) => {
+            if (err) {
+                console.log('400 Bad Request: ' + err.stack);
+                res.status(400).send('400 Bad Request'); // DBエラー
+                return;
+            }
+            console.log("Deleted " + result.affectedRows + " rows");
+        });
     res.render('client/user_delete.ejs');
 });
 
