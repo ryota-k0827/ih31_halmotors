@@ -1,0 +1,64 @@
+<!-- ユーザープロフィール画面 -->
+<%- include('../partials/header.ejs') %>
+<!-- 
+    取得したものは<% Object.values(); %>で表示 
+    ()の中身はcustomerテーブルのカラム名
+-->
+<div class="space-y-5">
+    <!-- ユーザー名 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+      <h3 class="text-xs border-b">ユーザー名</h3>
+      <p class="font-sans">
+        <% Object.values(name); %>
+      </p>
+    </div>
+    <!-- 郵便番号 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+      <h3 class="text-xs border-b">郵便番号</h3>
+      <p class="font-serif">
+        <% Object.values(postal_code); %>
+      </p>
+    </div>
+    <!-- 住所1 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+      <h3 class="text-xs border-b">住所1</h3>
+      <p class="font-mono">
+        <% Object.values(address1); %>
+      </p>
+    </div>
+    <!-- 住所2 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+        <h3 class="text-xs border-b">住所2</h3>
+        <p class="font-mono">
+            <% Object.values(address2); %>
+        </p>
+    </div>
+    <!-- 住所3 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+        <h3 class="text-xs border-b">住所3</h3>
+        <p class="font-mono">
+          <% Object.values(address3); %>
+        </p>
+    </div>
+    <!-- 電話番号 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+        <h3 class="text-xs border-b">電話番号</h3>
+        <p class="font-mono">
+            <% Object.values(tel); %>
+        </p>
+    </div>
+    <!-- メールアドレス -->
+    <div class="p-3 bg-white shadow rounded-lg">
+        <h3 class="text-xs border-b">メールアドレス</h3>
+        <p class="font-mono">
+            <% Object.values(mail); %>
+        </p>
+    </div>  
+    <!-- 生年月日 -->
+    <div class="p-3 bg-white shadow rounded-lg">
+        <h3 class="text-xs border-b">生年月日</h3>
+        <p class="font-mono">
+            <% Object.values(birthday); %>
+        </p>
+    </div>
+  </div>
