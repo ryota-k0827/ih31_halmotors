@@ -140,7 +140,7 @@ app.get("/search", (req, res) => {
 });
 // 入札・商品ページ表示
 app.get("/car_bid", (req, res) => {
-    res.render('carbid.ejs');
+    res.render('client/car_bid.ejs');
 });
 // 車両検索
 app.post("/search", (req, res) => {
