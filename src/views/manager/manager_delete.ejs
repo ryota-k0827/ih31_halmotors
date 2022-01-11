@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs') %>
+<form id=loginForm action="/manager_delete:id/result" method="post" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+  <!-- 業者名 -->
+  <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+    <input name="mail" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="username" type="text" placeholder="Username">
+    <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="username">
+      業者名
+    </label>
+  </div>
+  <!-- 従業員名 -->
+  <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+    <input name="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password" type="password" placeholder="Password">
+    <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">
+      従業員名
+    </label>
+  </div>
+  <!-- パスワード -->
+  <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+    <input name="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password" type="password" placeholder="Password">
+    <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">
+      パスワード
+    </label>
+  </div>
+  <div class="flex items-center justify-between">
+    <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">
+    従業員削除
+    </button>
+    <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="#">
+        パスワードを忘れた場合
+    </a>
+  </div>
+</form>
