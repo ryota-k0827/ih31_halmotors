@@ -20,11 +20,29 @@
             <!-- メーカー名 -->
             <p>メーカー名</p>
             <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="maker" type="text"
-                    placeholder="メーカーを入力してください" onclick="notNull()">
-                <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="maker">
-                </label>
-                <p id="null"></p>
+                <select name="maker"
+                    class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <option>メーカーを選択してください</option>
+                    <option value="TOYOTA">TOYOTA</option>
+                    <option value="LEXUS">LEXSUS</option>
+                    <option value="NISSAN">NISSAN</option>
+                    <option value="MITSUBISHI">MITSUBISHI</option>
+                    <option value="HONDA">HONDA</option>
+                    <option value="MAZDA">MAZDA</option>
+                    <option value="SUBARU">SUBARU</option>
+                    <option value="SUZUKI">SUZUKI</option>
+                    <option value="DAIHATSU">DAIHATSU</option>
+                    <option value="ISUZU">ISUZU</option>
+                    <option value="光岡自動車">光岡自動車</option>
+                    <option value="HINO">HINO</option>
+                    <option value="UDトラック">UDトラック</option>
+                    <option value="ゼネラルモータース">ゼネラルモータース</option>
+                    <option value="キャデラック">キャデラック</option>
+                    <option value="ビュイック">ビュイック</option>
+                    <option value="ポンテアック">ポンテアック</option>
+                    <option value="UDトラック">UDトラック</option>
+
+                </select>
             </div>
             <!-- 車両名 -->
             <p>車両名</p>

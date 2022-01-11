@@ -138,7 +138,10 @@ app.get("/logout", (req, res) => {
 app.get("/search", (req, res) => {
     res.render('search.ejs');
 });
-
+// 入札・商品ページ表示
+app.get("/car_bid", (req, res) => {
+    res.render('carbid.ejs');
+});
 // 車両検索
 app.post("/search", (req, res) => {
     let values = [
