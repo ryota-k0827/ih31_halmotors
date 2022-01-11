@@ -309,10 +309,6 @@ app.get('/user_delete:id/result', (req, res) => {
     res.render('client/user_delete.ejs');
 });
 
-
-
-
-
 // サーバー起動
 server.listen(config.port, () => {
     console.log("Server running on port: " + config.port);
