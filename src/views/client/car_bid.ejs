@@ -1,20 +1,267 @@
 <!--入札画面・商品ページ-->
 <%- include('../partials/header.ejs') %>
-
+<style>
+.top{
+  display: flex;
+  justify-content: space-around;
+}
+.top img{
+  width: 30%; 
+  height: auto;
+}
+.top h1{
+  font-size: 40px;
+}
+.top h2{
+  font-size: 25px;
+  color: #808080;
+  margin-bottom: 50px;
+}
+.detail{
+  margin-left: 30px;
+  
+}
+.button1{
+  font-size: 30px;
+  width: 500px;
+  background-color: aquamarine;
+  text-align: center;
+  border:  2px solid #000;
+}
+.button2{
+  font-size: 30px;
+  width: 500px;
+  background-color: #f1eded;
+  text-align: center;
+  border:  2px solid #000;
+  height: 90px;
+}
+</style>
     <body>
-        <div class="w-full md:w-1/2 lg:w-1/3 flex flex-col mb-8 px-3" >
-            <a href="/car_bid">
-            <div class="overflow-hidden bg-white rounded-lg shadow hover:shadow-raised hover:translateY-2px transition">
-              <img class="w-full" src="/img/escalade.png" alt="Sunset in the mountains">
-              <div class="p-6 flex flex-col justify-between ">
-                <h3 class="font-medium text-gray-900 mb-4 leading-normal">キャデラック・エスカレード・スポーツ
-                </h3>
-                <p class="inline-flex items-center">
-                  <span class="text-gray-700 text-sm">Read More</span>
-                </p>
-              </div>
-            </div>
+
+      <div class="top">
+        <img src="/img/escalade.png">
+        <div class="car_name">
+          <h1>キャデラック・エスカレード・スポーツ</h1>
+          <h2>現在の価格 400000円</h2>
+          <div class="button1">
+            <button class=""type="submit">
+              <a href="#">入札する</a>
+            </button>
           </div>
+          <div class="button2">  
+              <h2>残り時間&nbsp;&nbsp;<br>00:00</h2>
+          </div>
+        </div>
+      </div>>
+      <div class="detail">
+        <div class="space-y-5">
+          <!-- 車両評価 -->
+          <div class="p-3 bg-white shadow rounded-lg">
+            <h3 class="text-xs border-b">車両評価</h3>
+            <p class="font-sans">
+              車両評価
+            </p>
+          </div>
+          <!-- 外装評価 -->
+          <div class="p-3 bg-white shadow rounded-lg">
+            <h3 class="text-xs border-b">外装評価</h3>
+            <p class="font-serif">
+              車両評価
+            </p>
+          </div>
+            <!-- 内装評価 -->
+          <div class="p-3 bg-white shadow rounded-lg">
+            <h3 class="text-xs border-b">内装評価</h3>
+            <p class="font-serif">
+              内装評価
+            </p>
+          </div>
+          <!-- 年式 -->
+          <div class="p-3 bg-white shadow rounded-lg">
+            <h3 class="text-xs border-b">年式</h3>
+            <p class="font-serif">
+              年式
+            </p>
+          </div>
+          <!-- ドア数 -->
+          <div class="p-3 bg-white shadow rounded-lg">
+            <h3 class="text-xs border-b">ドア数</h3>
+            <p class="font-serif">
+              ドア数
+            </p>
+          </div>
+          <div class="space-y-5">
+            <!-- 車体グレード-->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">車体グレード</h3>
+              <p class="font-sans">
+                車体グレード
+              </p>
+            </div>
+            <!-- 車歴 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">車歴</h3>
+              <p class="font-serif">
+                車歴
+              </p>
+            </div>
+              <!-- 片式 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">片式</h3>
+              <p class="font-serif">
+                片式
+              </p>
+            </div>
+            <!-- 排気量 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">排気量</h3>
+              <p class="font-serif">
+                排気量
+              </p>
+            </div>
+            <!-- 燃料 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">燃料</h3>
+              <p class="font-serif">
+                燃料
+              </p>
+            </div>
+            <!-- 車検日 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">車検日</h3>
+              <p class="font-serif">
+                車検日
+              </p>
+            </div>
+            <!-- 走行距離 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">走行距離</h3>
+              <p class="font-serif">
+                走行距離
+              </p>
+            </div>
+            <!-- 外装色 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">外装色</h3>
+              <p class="font-serif">
+                外装色
+              </p>
+            </div>
+            <!-- 内装色 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">内装色</h3>
+              <p class="font-serif">
+                内装色
+              </p>
+            </div>
+            <!-- 色数 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">色数</h3>
+              <p class="font-serif">
+                色数
+              </p>
+            </div>
+            <!-- 車体番号 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">車体番号</h3>
+              <p class="font-serif">
+                車体番号
+              </p>
+            </div>
+            <!-- シフトタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">シフトタイプ</h3>
+              <p class="font-serif">
+                シフトタイプ
+              </p>
+            </div>
+            <!-- ギアタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">ギアタイプ</h3>
+              <p class="font-serif">
+                ギアタイプ
+              </p>
+            </div>
+            <!-- エアコンタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">エアコンタイプ</h3>
+              <p class="font-serif">
+                エアコンタイプ
+              </p>
+            </div>
+            <!-- パワーステアリング -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">パワーステアリング</h3>
+              <p class="font-serif">
+                パワーステアリング
+              </p>
+            </div>
+            <!-- パワーウィンド -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">パワーウィンド</h3>
+              <p class="font-serif">
+                パワーウィンド
+              </p>
+            </div>
+            <!-- アルミホイール -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">アルミホイール</h3>
+              <p class="font-serif">
+                アルミホイール
+              </p>
+            </div>
+            <!-- サンルーフ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">サンルーフ</h3>
+              <p class="font-serif">
+                サンルーフ
+              </p>
+            </div>
+            <!-- タイヤ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">タイヤ</h3>
+              <p class="font-serif">
+                タイヤ
+              </p>
+            </div>
+            <!-- 本革シート -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">本革シート</h3>
+              <p class="font-serif">
+                本革シート
+              </p>
+            </div>
+            <!-- エアバック -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">エアバック</h3>
+              <p class="font-serif">
+                エアバック
+              </p>
+            </div>
+            <!-- テレビ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">テレビ</h3>
+              <p class="font-serif">
+                テレビ
+              </p>
+            </div>
+            <!-- ナビ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">ナビ</h3>
+              <p class="font-serif">
+                ナビ
+              </p>
+            </div>
+            <!-- リアスポイラー -->
+            <div class="p-3 bg-white shadow rounded-lg">
+              <h3 class="text-xs border-b">リアスポイラー</h3>
+              <p class="font-serif">
+                リアスポイラー
+              </p>
+            </div>
+      </div>
+       
     </body>
     
     <%- include('../partials/footer.ejs') %>
