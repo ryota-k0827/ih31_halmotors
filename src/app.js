@@ -136,8 +136,9 @@ app.get("/logout", (req, res) => {
 
 // 車両検索ページ表示
 app.get("/search", (req, res) => {
-    res.render('search.ejs');
+    res.render('client/search.ejs');
 });
+
 // 入札・商品ページ表示
 app.get("/car_bid", (req, res) => {
     res.render('client/car_bid.ejs');
@@ -166,6 +167,7 @@ app.post("/search", (req, res) => {
 app.get("/detail", (req, res) => {
     res.render('client/detail_search.ejs');
 });
+
 
 
 
