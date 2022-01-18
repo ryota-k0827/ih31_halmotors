@@ -169,7 +169,10 @@ app.get("/detail", (req, res) => {
 });
 
 
-
+//オークション登録
+app.get('/car_listing', (req, res) => {
+    res.render('manager/car_listing.ejs');
+});
 
 // オークション一覧
 app.get("/listing", (req, res) => {

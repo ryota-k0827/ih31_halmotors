@@ -1,0 +1,226 @@
+<!--入札画面・商品ページ-->
+<%- include('../partials/header.ejs') %>
+<style>
+</style>
+    <body>
+      </div>
+      <div class="detail">
+        <div class="space-y-5">
+                <div class="p-3 bg-white shadow rounded-lg">
+                    画像登録
+                <input type="file" class="text-xs border-b">
+                </div>
+                <!-- メーカー名 -->
+
+
+                <!-- 車両評価 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    車両評価
+                    <input type="text" class="text-xs border-b" placeholder="車両評価を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 外装評価 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    外装評価
+                    <input type="text" class="text-xs border-b" placeholder="外装評価を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                    <!-- 内装評価 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    内装評価
+                    <input type="text" class="text-xs border-b" placeholder="内装評価を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 年式 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    年式
+                    <input type="text" class="text-xs border-b" placeholder="年式を入力">
+                    <p class="font-sans">
+                        </p>
+                        
+                </div>
+                <!-- ドア数 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    ドア数
+                    <input type="text" class="text-xs border-b" placeholder="ドア数を入力">
+                    <p class="font-sans">
+                        </p>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <!-- 車体グレード-->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    車体グレード
+                    <input type="text" class="text-xs border-b" placeholder="車体グレードを入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 車歴 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    車歴
+                    <input type="text" class="text-xs border-b" placeholder="車歴グレードを入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 片式 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    片式
+                    <input type="text" class="text-xs border-b" placeholder="片式を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 排気量 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    排気量
+                    <input type="text" class="text-xs border-b" placeholder="排気量を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 燃料 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    燃料
+                    <input type="text" class="text-xs border-b" placeholder="燃料を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 車検日 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    車検日
+                    <input type="text" class="text-xs border-b" placeholder="車検日を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 走行距離 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    走行距離
+                    <input type="text" class="text-xs border-b" placeholder="走行距離を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 外装色 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    外装色
+                    <input type="text" class="text-xs border-b" placeholder="外装色を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 内装色 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    内装色
+                    <input type="text" class="text-xs border-b" placeholder="内装色を入力">
+                    <p class="font-sans">
+                    </p>
+                </div>
+                <!-- 色数 -->
+                <div class="p-3 bg-white shadow rounded-lg">
+                    色数
+                    <input type="text" class="text-xs border-b" placeholder="色数を入力">
+                    <p class="font-sans">
+                    </p>
+            </div>
+            <!-- 車体番号 -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                車体番号
+                    <input type="text" class="text-xs border-b" placeholder="車体番号を入力">
+                    <p class="font-sans">
+                    </p>
+            </div>
+            <!-- シフトタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                シフトタイプ
+                    <input type="text" class="text-xs border-b" placeholder="シフトタイプを入力">
+                    <p class="font-sans">
+                    </p>
+            </div>
+            <!-- ギアタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                ギアタイプ
+                    <input type="text" class="text-xs border-b" placeholder="ギアタイプを入力">
+                    <p class="font-sans">
+                    </p>
+            </div>
+            <!-- エアコンタイプ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                エアコンタイプ
+                <input type="text" class="text-xs border-b" placeholder="エアコンタイプを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- パワーステアリング -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                パワーステアリング
+                <input type="text" class="text-xs border-b" placeholder="パワーステアリングを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- パワーウィンド -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                パワーウィンド
+                <input type="text" class="text-xs border-b" placeholder="パワーウィンドを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- アルミホイール -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                アルミホイール
+                <input type="text" class="text-xs border-b" placeholder="アルミホイールを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- サンルーフ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                ナビナビルーフ
+                <input type="text" class="text-xs border-b" placeholder="サンルーフを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- タイヤ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                タイヤ
+                <input type="text" class="text-xs border-b" placeholder="タイヤを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- 本革シート -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                本革シート
+                <input type="text" class="text-xs border-b" placeholder="本革シートを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- エアバック -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                エアバック
+                <input type="text" class="text-xs border-b" placeholder="エアバックを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- テレビ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                テレビ
+                <input type="text" class="text-xs border-b" placeholder="テレビを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- ナビ -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                ナビ
+                <input type="text" class="text-xs border-b" placeholder="ナビを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+            <!-- リアスポイラー -->
+            <div class="p-3 bg-white shadow rounded-lg">
+                リアスポイラー
+                <input type="text" class="text-xs border-b" placeholder="リアスポイラーを入力">
+                <p class="font-sans">
+                </p>
+            </div>
+        </div>
+    </div>
+    </body>
+    
+    <%- include('../partials/footer.ejs') %>
