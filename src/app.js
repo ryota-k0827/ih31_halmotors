@@ -317,6 +317,25 @@ app.get('/user_delete:id/result', (req, res) => {
     res.render('client/user_delete.ejs');
 });
 
+//管理者画面
+app.get('/manager_top', (req, res) => {
+    res.render('manager/manager_top.ejs');
+});
+//オークション一覧
+app.get('/car_bidlist', (req, res) => {
+    res.render('manager/car_bidlist.ejs');
+});
+//落札画面
+//車両登録
+app.get('/car_register', (req, res) => {
+    res.render('manager/car_register.ejs');
+});
+//車両登録削除
+app.get('/car_delete', (req, res) => {
+    res.render('manager/car_delete.ejs');
+});
+
+
 // サーバー起動
 server.listen(config.port, () => {
     console.log("Server running on port: " + config.port);
