@@ -169,7 +169,10 @@ app.get("/detail", (req, res) => {
 });
 
 
-
+//
+app.get("/car_bidlist", (req, res) => {
+    res.render('manager/car_bidlist.ejs');
+});
 
 // オークション一覧
 app.get("/listing", (req, res) => {
