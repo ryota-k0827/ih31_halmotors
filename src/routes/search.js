@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
         await sql("SELECT_CAR_LIST")
       );
     }
-
+    // console.log(results);
     res.render("./search/list.ejs", { results });
   } catch (err) {
     next(err);
