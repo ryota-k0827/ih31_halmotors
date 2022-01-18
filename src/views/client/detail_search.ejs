@@ -1,5 +1,6 @@
-<!-- 車両登録画面 -->
 <%- include('../partials/header.ejs') %>
+    <h1>絞り込み検索の画面だよ。</h1>
+
     <script>
         function notNull() {
             // Get the value of the input field with id="numb"
@@ -16,75 +17,79 @@
     </script>
 
     <body>
+        <div class="text-center">
+            <h1 class="my-4 font-medium">条件を設定してください</h1>
+            <p class="leading-normal mb-4 max-w-sm m-auto">please show your asshole</p>
+        </div>
         <form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
-            <!-- メーカー名 -->
-            <p>メーカー名</p>
-            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <select name="maker"
-                    class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                    <option>メーカーを選択してください</option>
-                    <!-- 日本車メーカー -->
-                    <option value="TOYOTA">TOYOTA</option>
-                    <option value="LEXUS">LEXSUS</option>
-                    <option value="NISSAN">NISSAN</option>
-                    <option value="MITSUBISHI">MITSUBISHI</option>
-                    <option value="HONDA">HONDA</option>
-                    <option value="MAZDA">MAZDA</option>
-                    <option value="SUBARU">SUBARU</option>
-                    <option value="SUZUKI">SUZUKI</option>
-                    <option value="DAIHATSU">DAIHATSU</option>
-                    <option value="ISUZU">ISUZU</option>
-                    <option value="光岡自動車">光岡自動車</option>
-                    <option value="HINO">HINO</option>
-                    <option value="UDトラック">UDトラック</option>
-                    <!-- アメリカ車メーカー -->
-                    <option value="ゼネラルモータース">ゼネラルモータース</option>
-                    <option value="キャデラック">キャデラック</option>
-                    <option value="ビュイック">ビュイック</option>
-                    <option value="ポンテアック">ポンテアック</option>
-                    <option value="シボレー">シボレー</option>
-                    <option value="ハマー">ハマー</option>
-                    <option value="GMC">GMC</option>
-                    <option value="フォード・モーター">フォード・モーター</option>
-                    <option value="リンカーン">リンカーン</option>
-                    <option value="クライスラー">クライスラー</option>
-                    <option value="クライスラー・ジープ">クライスラー・ジープ</option>
-                    <option value="ダッジ">ダッジ</option>
-                    <option value="テスラ">テスラ</option>
-                    <option value="クライスラー">クライスラー</option>
-                    <!-- イギリス車メーカー -->
-                    <option value="ロールスロイス">ロールスロイス</option>
-                    <option value="ベントレー">ベントレー</option>
-                    <option value="ギャガー">ジャガー</option>
-                    <option value="MINI">MINI</option>
-                    <option value="ランドローバー">ランドローバー</option>
-                    <option value="アストンマーチン">アストンマーチン</option>
-                    <option value="ロータス">ロータス</option>
-                    <option value="ケータハム">ケータハム</option>
-                    <option value="マクラーレン">マクラーレン</option>
-                    <option value="ウェストフィールド">ウェストフィールド</option>
-                    <!-- ドイツ車メーカー -->
-                    <option value="フォルクスワーゲン">フォルクスワーゲン</option>
-                    <option value="アウディ">アウディ</option>
-                    <option value="BMW">BMW</option>
-                    <option value="ポルシェ">ポルシェ</option>
-                    <option value="ダイムラー">ダイムラー</option>
-                    <option value="メルセデス・ベンツ">メルセデス・ベンツ</option>
-                    <option value="マイバッハ">マイバッハ</option>
-                    <!-- イタリア車メーカー -->
-                    <option value="フィアット">フィアット</option>
-                    <option value="フェラーリ">フェラーリ</option>
-                    <option value="ランボルギーニ">ランボルギーニ</option>
-                    <option value="アルファ・ロメオ">アルファ・ロメオ</option>
-                    <option value="マセラティ">マセラティ</option>
-                    <option value="アバルト">アバルト</option>
-                    <!-- フランス車メーカー -->
-                    <option value="ルノー">ルノー</option>
-                    <option value="シトロエン">シトロエン</option>
-                    <option value="プジョー">プジョー</option>
-                    <option value="ブガッティ">ブガッティ</option>
-                </select>
-            </div>
+        <!-- メーカー名 -->
+        <p>メーカー名</p>
+        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+            <select name="maker"
+                class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option>メーカーを選択してください</option>
+                <!-- 日本車メーカー -->
+                <option value="TOYOTA">TOYOTA</option>
+                <option value="LEXUS">LEXSUS</option>
+                <option value="NISSAN">NISSAN</option>
+                <option value="MITSUBISHI">MITSUBISHI</option>
+                <option value="HONDA">HONDA</option>
+                <option value="MAZDA">MAZDA</option>
+                <option value="SUBARU">SUBARU</option>
+                <option value="SUZUKI">SUZUKI</option>
+                <option value="DAIHATSU">DAIHATSU</option>
+                <option value="ISUZU">ISUZU</option>
+                <option value="光岡自動車">光岡自動車</option>
+                <option value="HINO">HINO</option>
+                <option value="UDトラック">UDトラック</option>
+                <!-- アメリカ車メーカー -->
+                <option value="ゼネラルモータース">ゼネラルモータース</option>
+                <option value="キャデラック">キャデラック</option>
+                <option value="ビュイック">ビュイック</option>
+                <option value="ポンテアック">ポンテアック</option>
+                <option value="シボレー">シボレー</option>
+                <option value="ハマー">ハマー</option>
+                <option value="GMC">GMC</option>
+                <option value="フォード・モーター">フォード・モーター</option>
+                <option value="リンカーン">リンカーン</option>
+                <option value="クライスラー">クライスラー</option>
+                <option value="クライスラー・ジープ">クライスラー・ジープ</option>
+                <option value="ダッジ">ダッジ</option>
+                <option value="テスラ">テスラ</option>
+                <option value="クライスラー">クライスラー</option>
+                <!-- イギリス車メーカー -->
+                <option value="ロールスロイス">ロールスロイス</option>
+                <option value="ベントレー">ベントレー</option>
+                <option value="ギャガー">ジャガー</option>
+                <option value="MINI">MINI</option>
+                <option value="ランドローバー">ランドローバー</option>
+                <option value="アストンマーチン">アストンマーチン</option>
+                <option value="ロータス">ロータス</option>
+                <option value="ケータハム">ケータハム</option>
+                <option value="マクラーレン">マクラーレン</option>
+                <option value="ウェストフィールド">ウェストフィールド</option>
+                <!-- ドイツ車メーカー -->
+                <option value="フォルクスワーゲン">フォルクスワーゲン</option>
+                <option value="アウディ">アウディ</option>
+                <option value="BMW">BMW</option>
+                <option value="ポルシェ">ポルシェ</option>
+                <option value="ダイムラー">ダイムラー</option>
+                <option value="メルセデス・ベンツ">メルセデス・ベンツ</option>
+                <option value="マイバッハ">マイバッハ</option>
+                <!-- イタリア車メーカー -->
+                <option value="フィアット">フィアット</option>
+                <option value="フェラーリ">フェラーリ</option>
+                <option value="ランボルギーニ">ランボルギーニ</option>
+                <option value="アルファ・ロメオ">アルファ・ロメオ</option>
+                <option value="マセラティ">マセラティ</option>
+                <option value="アバルト">アバルト</option>
+                <!-- フランス車メーカー -->
+                <option value="ルノー">ルノー</option>
+                <option value="シトロエン">シトロエン</option>
+                <option value="プジョー">プジョー</option>
+                <option value="ブガッティ">ブガッティ</option>
+            </select>
+        </div>
             <!-- 車両名 -->
             <p>車両名</p>
             <div class="relative border rounded mb-4 shadow appearance-none label-floating">
@@ -199,7 +204,7 @@
 
             <div class="flex items-center justify-between">
                 <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
-                    登録
+                    この条件で検索
                 </button>
             </div>
 
