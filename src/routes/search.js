@@ -26,7 +26,28 @@ router.get("/", async (req, res, next) => {
 
 // 絞り込み検索
 router.get("/detail", (req, res) => {
-  res.render("./search/detail_search.ejs");
+  res.render("./search/detail-search.ejs");
+});
+
+// 入札画面（車両ページ）
+router.get("/bid/:id", async (req, res, next) => {
+  let id = req.params.id || "";
+  let results;
+
+  try {
+    if (id) {
+      results = await MySQLClient.executeQuery(
+        await sql("SELECT_CAR_BY_ID"),
+        `%${id}%`
+      );
+      // console.log(results);
+      res.render("./search/bid.ejs", { results });
+    } else {
+      res.status(404).send("404 Not Found");
+    }
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

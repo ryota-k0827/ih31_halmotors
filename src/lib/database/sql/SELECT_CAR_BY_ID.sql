@@ -8,5 +8,5 @@ FROM
   car
 JOIN listing ON listing.car_id = car.id
 WHERE
-  listing.flg = 1
-ORDER BY listing.date ASC
+  listing.flg = 1 AND
+  car.id = ?

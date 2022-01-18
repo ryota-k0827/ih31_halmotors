@@ -1,4 +1,5 @@
 SELECT
+  car.id,
   car.name,
   listing.date,
   FORMAT(listing.start_price, 0) AS start_price,
