@@ -374,9 +374,9 @@
     "base64-arraybuffer" "~1.0.1"
 
 "engine.io@~6.1.0":
-  "integrity" "sha512-ErhZOVu2xweCjEfYcTdkCnEYUiZgkAcBBAhW4jbIvNG8SLU3orAqoJCiytZjYF7eTpVmmCrLDjLIEaPlUAs1uw=="
-  "resolved" "https://registry.npmjs.org/engine.io/-/engine.io-6.1.0.tgz"
-  "version" "6.1.0"
+  "integrity" "sha512-AyMc20q8JUUdvKd46+thc9o7yCZ6iC6MoBCChG5Z1XmFMpp+2+y/oKvwpZTUJB0KCjxScw1dV9c2h5pjiYBLuQ=="
+  "resolved" "https://registry.npmjs.org/engine.io/-/engine.io-6.1.1.tgz"
+  "version" "6.1.1"
   dependencies:
     "@types/cookie" "^0.4.1"
     "@types/cors" "^2.8.12"
