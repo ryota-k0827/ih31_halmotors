@@ -1,11 +1,10 @@
 SELECT
-  bid.price AS price,
-  bid.date AS date
+  car.id,
+  FORMAT(MAX(bid.price), 0) AS price
 FROM
-  bid
-JOIN listing ON listing.id = bid.listing_id
-JOIN car ON car.id = listing.car_id
+  car
+JOIN listing ON car.id = listing.car_id
+JOIN bid ON listing.id = bid.listing_id
 WHERE
-  listing.flg = 1 AND
   car.id LIKE ?
--- GROUP BY bid.listing_id
+GROUP BY car.id
