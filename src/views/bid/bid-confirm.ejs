@@ -1,0 +1,45 @@
+<!-- 入札確認ページ -->
+<%- include('../partials/header.ejs') %>
+<style>
+  .button1 {
+    font-size: 30px;
+    width: 500px;
+    background-color: aquamarine;
+    text-align: center;
+    border: 2px solid #000;
+  }
+</style>
+<form
+  id="bidConfirm"
+  action="/bid/complete"
+  method="POST"
+  class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
+>
+  <input type="hidden" id="listingId" name="listingId" value="<%= listing_id %>" />
+  <div class="text-center">
+    <h1 class="my-4 font-medium">こちらの商品に入札します。</h1>
+    <p class="leading-normal mb-4 max-w-sm m-auto"><%= name %></p>
+  </div>
+  <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+    <input
+      name="price"
+      class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
+      id="price"
+      type="number"
+      value="<%= price %>"
+      placeholder="<%= price %>"
+      required
+    />
+    <p>↓ログイン実装後に削除</p>
+    <input
+      name="customerId"
+      class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
+      id="customerId"
+      type="number"
+      placeholder="customer.id"
+      required
+    />
+  </div>
+  <button button class="button1" type="submit">入札</button>
+</form>
+<%- include('../partials/footer.ejs') %>

@@ -30,8 +30,9 @@ SELECT
   car.tv,
   car.navi,
   car.rear_spo,
+  listing.id AS listing_id,
   listing.date,
-  FORMAT(listing.start_price, 0) AS start_price,
+  listing.start_price AS start_price,
   listing.flg
 FROM
   car

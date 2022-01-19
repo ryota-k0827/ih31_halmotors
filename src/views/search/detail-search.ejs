@@ -1,6 +1,4 @@
 <%- include('../partials/header.ejs') %>
-    <h1>絞り込み検索の画面だよ。</h1>
-
     <script>
         function notNull() {
             // Get the value of the input field with id="numb"
@@ -21,7 +19,7 @@
             <h1 class="my-4 font-medium">条件を設定してください</h1>
             <p class="leading-normal mb-4 max-w-sm m-auto">please show your asshole</p>
         </div>
-        <form class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+        <form method="GET" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8" action="/search?keyword=#">
         <!-- メーカー名 -->
         <p>メーカー名</p>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
@@ -203,7 +201,7 @@
             </div>
 
             <div class="flex items-center justify-between">
-                <button class="bg-black hover:bg-black text-white py-2 px-4" type="button">
+                <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">
                     この条件で検索
                 </button>
             </div>

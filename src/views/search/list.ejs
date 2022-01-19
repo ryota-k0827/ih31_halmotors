@@ -35,8 +35,8 @@
                   <img class="w-full" src="/public/img/<%= item.name %>.jpg" id="target"  alt="Sunset in the mountains">
                   <div class="p-6 flex flex-col justify-between ">
                       <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="carName"><%= item.name %></h3>
-                      <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="date"><%= moment(item.date).format("YYYY/MM/DD HH:mm") %></h3>
-                      <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="start_price">¥<%= item.start_price %></h3>
+                      <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="date">開始日時: <%= moment(item.date).format("YYYY/MM/DD HH:mm") %></h3>
+                      <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="start_price">開始価格: <%= Number(item.start_price).toLocaleString() %>円</h3>
                       <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="flg"><%= item.flg %></h3>
                       <p class="inline-flex items-center">
                       </p>

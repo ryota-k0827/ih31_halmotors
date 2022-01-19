@@ -3,8 +3,12 @@ const path = require("path");
 const logger = require("./lib/log/logger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
+const http = require("http");
+const socketio = require("socket.io");
 const express = require("express");
 const app = express();
+const server = http.Server(app);
+const io = socketio.io(server);
 
 // Express Settings.
 app.set("view engine", "ejs");
@@ -22,12 +26,16 @@ app.use("/public", express.static(path.join(__dirname, "/public")));
 // Set access log.
 app.use(accesslogger());
 
+// Set middleware
+app.use(express.urlencoded({ extended: true }));
+
 // Dynamic resources rooting.
 app.use("/", require("./routes/index.js"));
 app.use("/login", require("./routes/login.js"));
 app.use("/signup", require("./routes/signup.js"));
 app.use("/unsubscribe", require("./routes/unsubscribe.js"));
 app.use("/search", require("./routes/search.js"));
+app.use("/bid", require("./routes/bid/bid.js"));
 
 // Set application log.
 app.use(applicationlogger());
@@ -36,3 +44,7 @@ app.use(applicationlogger());
 app.listen(PORT, () => {
   logger.application.info(`Application listening at ${PORT}`);
 });
+
+// io.on("connection", (socker) => {
+//   console.log("Connected is socket.");
+// });

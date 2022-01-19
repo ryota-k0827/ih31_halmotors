@@ -1,6 +1,6 @@
 SELECT
   car.id,
-  FORMAT(MAX(bid.price), 0) AS price
+  MAX(bid.price) AS price
 FROM
   car
 JOIN listing ON car.id = listing.car_id
