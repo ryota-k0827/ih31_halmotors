@@ -3,12 +3,12 @@ const path = require("path");
 const logger = require("./lib/log/logger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
-const http = require("http");
-const socketio = require("socket.io");
+// const http = require("http");
+// const socketio = require("socket.io");
 const express = require("express");
 const app = express();
-const server = http.Server(app);
-const io = socketio.io(server);
+// const server = http.Server(app);
+// const io = socketio.io(server);
 
 // Express Settings.
 app.set("view engine", "ejs");
