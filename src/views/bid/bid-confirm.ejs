@@ -2,11 +2,22 @@
 <%- include('../partials/header.ejs') %>
 <style>
   .button1 {
+    margin: 0 auto;
     font-size: 30px;
-    width: 500px;
+    width: 385px;
     background-color: aquamarine;
     text-align: center;
     border: 2px solid #000;
+  }
+  h1{
+    text-align: center;
+    font-size: 25px;
+  }
+  p{
+    font-size: 20px;
+  }
+  input{
+    font-size: 30px;
   }
 </style>
 <form
@@ -30,7 +41,7 @@
       placeholder="<%= price %>"
       required
     />
-    <p>↓ログイン実装後に削除</p>
+    <!-- <p>↓ログイン実装後に削除</p> -->
     <input
       name="customerId"
       class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
