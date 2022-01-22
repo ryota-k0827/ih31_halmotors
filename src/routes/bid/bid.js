@@ -14,13 +14,12 @@ router.post("/confirm/:id", (req, res) => {
 
 // 入札完了
 router.post("/complete", async (req, res, next) => {
-  const date = new Date();
-  let now_date = date.toLocaleString();
-
+  // const date = new Date();
+  // let now_date = date.toLocaleString();
   let { listingId, price, customerId } = req.body;
 
   try {
-    MySQLClient.executeQuery(await sql("INSERT_BID"), [listingId, customerId, price, now_date]);
+    MySQLClient.executeQuery(await sql("INSERT_BID"), [listingId, customerId, price]);
     res.render("./bid/bid-complete.ejs");
   } catch (err) {
     next(err);
