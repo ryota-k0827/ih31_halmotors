@@ -1,387 +1,393 @@
 <!-- 車両登録確認ページ -->
-<%- include('../partials/header.ejs') %>
-
-<body>
-  <div class="text-center">
-    <h1>以下の内容で登録します。</h1>
-  </div>
-  <form
-    action="/manager/car/regist/execute"
-    method="POST"
-    class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
-  >
-    <!-- 車両名 -->
-    <p>車両名</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="name"
-        type="text"
-        name="name"
-        value="<%= name %>"
-        readonly
-      />
-      <label
-        class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
-        for="name"
-      >
-      </label>
-      <p id="null"></p>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <%- include('../partials/header.ejs') %>
+    <title>車両登録画面: 確認</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="text-center">
+      <h1>以下の内容で登録します。</h1>
     </div>
-    <!-- メーカー名 -->
-    <p>メーカー名</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="maker"
-        type="text"
-        name="maker"
-        value="<%= maker %>"
-        readonly
-      />
-    </div>
-    <!-- 車両評価（総合） -->
-    <p>車両評価（総合）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="evaluation"
-        type="text"
-        name="evaluation"
-        value="<%= evaluation %>"
-        readonly
-      />
-    </div>
-    <!-- 車両評価（外装） -->
-    <p>車両評価（外装）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="outer_evaluation"
-        type="text"
-        name="outer_evaluation"
-        value="<%= outer_evaluation %>"
-        readonly
-      />
-    </div>
-    <!-- 車両評価（内装） -->
-    <p>車両評価（内装）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="inner_evaluation"
-        type="text"
-        name="inner_evaluation"
-        value="<%= inner_evaluation %>"
-        readonly
-      />
-    </div>
-    <!-- 年式 -->
-    <p>年式</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="model_year"
-        type="text"
-        name="model_year"
-        value="<%= model_year %>"
-        readonly
-      />
-    </div>
-    <!-- ドア数 -->
-    <p>ドア数</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="door"
-        type="text"
-        name="door"
-        value="<%= door %>"
-        readonly
-      />
-    </div>
-    <!-- ボディタイプ -->
-    <p>ボディタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="shape"
-        type="text"
-        name="shape"
-        value="<%= shape %>"
-        readonly
-      />
-    </div>
-    <!-- グレード -->
-    <p>グレード</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="grade"
-        type="text"
-        name="shagradepe"
-        value="<%= grade %>"
-        readonly
-      />
-    </div>
-    <!-- 車歴 -->
-    <p>車歴</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="history"
-        type="text"
-        name="history"
-        value="<%= history %>"
-        readonly
-      />
-    </div>
-    <!-- 型式 -->
-    <p>型式</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="model"
-        type="text"
-        name="model"
-        value="<%= model %>"
-        readonly
-      />
-    </div>
-    <!-- 排気量 -->
-    <p>排気量</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="engine_size"
-        type="text"
-        name="engine_size"
-        value="<%= engine_size %>"
-        readonly
-      />
-    </div>
-    <!-- 油種 -->
-    <p>油種</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="fuel_type"
-        type="text"
-        name="fuel_type"
-        value="<%= fuel_type %>"
-        readonly
-      />
-    </div>
-    <!-- 車検日 -->
-    <p>車検日</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="inspection_day"
-        type="text"
-        name="inspection_day"
-        value="<%= inspection_day %>"
-        readonly
-      />
-    </div>
-    <!-- 走行距離 -->
-    <p>走行距離</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="mileage"
-        type="text"
-        name="mileage"
-        value="<%= mileage %>"
-        readonly
-      />
-    </div>
-    <!-- 外装色 -->
-    <p>外装色</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="outer_color"
-        type="text"
-        name="outer_color"
-        value="<%= outer_color %>"
-        readonly
-      />
-    </div>
-    <!-- 内装色 -->
-    <p>内装色</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="inner_color"
-        type="text"
-        name="inner_color"
-        value="<%= inner_color %>"
-        readonly
-      />
-    </div>
-    <!-- 色数 -->
-    <p>色数</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="color_number"
-        type="text"
-        name="color_number"
-        value="<%= color_number %>"
-        readonly
-      />
-    </div>
-    <!-- 車体番号 -->
-    <p>車体番号</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="identifier"
-        type="text"
-        name="identifier"
-        value="<%= identifier %>"
-        readonly
-      />
-    </div>
-    <!-- シフトタイプ -->
-    <p>シフトタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="shift_type"
-        type="text"
-        name="shift_type"
-        value="<%= shift_type %>"
-        readonly
-      />
-    </div>
-    <!-- ギアタイプ -->
-    <p>ギアタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="gear_type"
-        type="text"
-        name="gear_type"
-        value="<%= gear_type %>"
-        readonly
-      />
-    </div>
-    <!-- エアコンタイプ -->
-    <p>エアコンタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="ac_type"
-        type="text"
-        name="ac_type"
-        value="<%= ac_type %>"
-        readonly
-      />
-    </div>
-    <!-- チェックボックス -->
-    <div class="etc">
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= ps?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="ps" value=<%= ps?"1":"0"; %>>
-        <label for="ps" class="select-none">パワーステアリング</label>
+    <form
+      action="/manager/car/regist/execute"
+      method="POST"
+      class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
+    >
+      <!-- 車両名 -->
+      <p>車両名</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="name"
+          type="text"
+          name="name"
+          value="<%= name %>"
+          readonly
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="name"
+        >
+        </label>
+        <p id="null"></p>
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= pw?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="pw" value=<%= pw?"1":"0"; %>>
-        <label for="pw" class="select-none">パワーウィンドウ</label>
+      <!-- メーカー名 -->
+      <p>メーカー名</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="maker"
+          type="text"
+          name="maker"
+          value="<%= maker %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= aw?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="aw" value=<%= aw?"1":"0"; %>>
-        <label for="aw" class="select-none">アルミホイール</label>
+      <!-- 車両評価（総合） -->
+      <p>車両評価（総合）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="evaluation"
+          type="text"
+          name="evaluation"
+          value="<%= evaluation %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= sr?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="sr" value=<%= sr?"1":"0"; %>>
-        <label for="sr" class="select-none">サンルーフ</label>
+      <!-- 車両評価（外装） -->
+      <p>車両評価（外装）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="outer_evaluation"
+          type="text"
+          name="outer_evaluation"
+          value="<%= outer_evaluation %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= tire?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="tire" value=<%= tire?"1":"0"; %>>
-        <label for="tire" class="select-none">タイヤ</label>
+      <!-- 車両評価（内装） -->
+      <p>車両評価（内装）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="inner_evaluation"
+          type="text"
+          name="inner_evaluation"
+          value="<%= inner_evaluation %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= leather_sheet?"checked=checked":""; %> disabled="disabled"/>
-        <input type="hidden" name="leather_sheet" value=<%= leather_sheet?"1":"0"; %>>
-        <label for="leather_sheet" class="select-none">本革シート</label>
+      <!-- 年式 -->
+      <p>年式</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="model_year"
+          type="text"
+          name="model_year"
+          value="<%= model_year %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= ab?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="ab" value=<%= ab?"1":"0"; %>>
-        <label for="ab" class="select-none">エアバック</label>
+      <!-- ドア数 -->
+      <p>ドア数</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="door"
+          type="text"
+          name="door"
+          value="<%= door %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= tv?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="tv" value=<%= tv?"1":"0"; %>>
-        <label for="tv" class="select-none">テレビ</label>
+      <!-- ボディタイプ -->
+      <p>ボディタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="shape"
+          type="text"
+          name="shape"
+          value="<%= shape %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= navi?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="navi" value=<%= navi?"1":"0"; %>>
-        <label for="navi" class="select-none">ナビ</label>
+      <!-- グレード -->
+      <p>グレード</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="grade"
+          type="text"
+          name="shagradepe"
+          value="<%= grade %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= rear_spo?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="rear_spo" value=<%= rear_spo?"1":"0"; %>>
-        <label for="rear_spo" class="select-none">リアスポイラー</label>
+      <!-- 車歴 -->
+      <p>車歴</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="history"
+          type="text"
+          name="history"
+          value="<%= history %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= manual?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="manual" value=<%= manual?"1":"0"; %>>
-        <label for="manual" class="select-none">取説</label>
+      <!-- 型式 -->
+      <p>型式</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="model"
+          type="text"
+          name="model"
+          value="<%= model %>"
+          readonly
+        />
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" <%= warranty?"checked=checked":""; %> disabled="disabled"/> <input
-        type="hidden" name="warranty" value=<%= warranty?"1":"0"; %>>
-        <label for="warranty" class="select-none">保証書</label>
+      <!-- 排気量 -->
+      <p>排気量</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="engine_size"
+          type="text"
+          name="engine_size"
+          value="<%= engine_size %>"
+          readonly
+        />
       </div>
-    </div>
-    <!-- その他車両情報 -->
-    <p>その他車両情報</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <textarea
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="other_option"
-        name="other_option"
-        rows="5"
-        readonly
-      >
+      <!-- 油種 -->
+      <p>油種</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="fuel_type"
+          type="text"
+          name="fuel_type"
+          value="<%= fuel_type %>"
+          readonly
+        />
+      </div>
+      <!-- 車検日 -->
+      <p>車検日</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="inspection_day"
+          type="text"
+          name="inspection_day"
+          value="<%= inspection_day %>"
+          readonly
+        />
+      </div>
+      <!-- 走行距離 -->
+      <p>走行距離</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="mileage"
+          type="text"
+          name="mileage"
+          value="<%= mileage %>"
+          readonly
+        />
+      </div>
+      <!-- 外装色 -->
+      <p>外装色</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="outer_color"
+          type="text"
+          name="outer_color"
+          value="<%= outer_color %>"
+          readonly
+        />
+      </div>
+      <!-- 内装色 -->
+      <p>内装色</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="inner_color"
+          type="text"
+          name="inner_color"
+          value="<%= inner_color %>"
+          readonly
+        />
+      </div>
+      <!-- 色数 -->
+      <p>色数</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="color_number"
+          type="text"
+          name="color_number"
+          value="<%= color_number %>"
+          readonly
+        />
+      </div>
+      <!-- 車体番号 -->
+      <p>車体番号</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="identifier"
+          type="text"
+          name="identifier"
+          value="<%= identifier %>"
+          readonly
+        />
+      </div>
+      <!-- シフトタイプ -->
+      <p>シフトタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="shift_type"
+          type="text"
+          name="shift_type"
+          value="<%= shift_type %>"
+          readonly
+        />
+      </div>
+      <!-- ギアタイプ -->
+      <p>ギアタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="gear_type"
+          type="text"
+          name="gear_type"
+          value="<%= gear_type %>"
+          readonly
+        />
+      </div>
+      <!-- エアコンタイプ -->
+      <p>エアコンタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="ac_type"
+          type="text"
+          name="ac_type"
+          value="<%= ac_type %>"
+          readonly
+        />
+      </div>
+      <!-- チェックボックス -->
+      <div class="etc">
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= ps?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="ps" value=<%= ps?"1":"0"; %>>
+          <label for="ps" class="select-none">パワーステアリング</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= pw?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="pw" value=<%= pw?"1":"0"; %>>
+          <label for="pw" class="select-none">パワーウィンドウ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= aw?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="aw" value=<%= aw?"1":"0"; %>>
+          <label for="aw" class="select-none">アルミホイール</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= sr?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="sr" value=<%= sr?"1":"0"; %>>
+          <label for="sr" class="select-none">サンルーフ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= tire?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="tire" value=<%= tire?"1":"0"; %>>
+          <label for="tire" class="select-none">タイヤ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= leather_sheet?"checked=checked":""; %> disabled="disabled"/>
+          <input type="hidden" name="leather_sheet" value=<%= leather_sheet?"1":"0"; %>>
+          <label for="leather_sheet" class="select-none">本革シート</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= ab?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="ab" value=<%= ab?"1":"0"; %>>
+          <label for="ab" class="select-none">エアバック</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= tv?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="tv" value=<%= tv?"1":"0"; %>>
+          <label for="tv" class="select-none">テレビ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= navi?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="navi" value=<%= navi?"1":"0"; %>>
+          <label for="navi" class="select-none">ナビ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= rear_spo?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="rear_spo" value=<%= rear_spo?"1":"0"; %>>
+          <label for="rear_spo" class="select-none">リアスポイラー</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= manual?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="manual" value=<%= manual?"1":"0"; %>>
+          <label for="manual" class="select-none">取説</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" <%= warranty?"checked=checked":""; %> disabled="disabled"/> <input
+          type="hidden" name="warranty" value=<%= warranty?"1":"0"; %>>
+          <label for="warranty" class="select-none">保証書</label>
+        </div>
+      </div>
+      <!-- その他車両情報 -->
+      <p>その他車両情報</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <textarea
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="other_option"
+          name="other_option"
+          rows="5"
+          readonly
+        >
 <%= other_option %></textarea
-      >
-    </div>
-    <!-- 検査員メモ -->
-    <p>検査員メモ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <textarea
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="information"
-        name="information"
-        rows="5"
-        readonly
-      >
+        >
+      </div>
+      <!-- 検査員メモ -->
+      <p>検査員メモ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <textarea
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="information"
+          name="information"
+          rows="5"
+          readonly
+        >
 <%= information %></textarea
-      >
-    </div>
+        >
+      </div>
 
-    <div class="flex items-center justify-between">
-      <!-- aタグ -->
+      <div class="flex items-center justify-between">
+        <!-- aタグ -->
 
-      <button
-        class="bg-black hover:bg-black text-white py-2 px-4"
-        type="button"
-        onclick="history.back()"
-      >
-        <a href="#" onclick="history.back(-1);return false;">修正</a>
-      </button>
-      <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">登録</button>
-    </div>
-  </form>
-</body>
-<%- include('../partials/footer.ejs') %>
+        <button
+          class="bg-black hover:bg-black text-white py-2 px-4"
+          type="button"
+          onclick="history.back()"
+        >
+          <a href="#" onclick="history.back(-1);return false;">修正</a>
+        </button>
+        <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">登録</button>
+      </div>
+    </form>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

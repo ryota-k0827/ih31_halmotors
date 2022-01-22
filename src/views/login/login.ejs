@@ -1,25 +1,40 @@
 <!--ログイン画面-->
 <%- include('../partials/header.ejs') %>
-<form id=loginForm action="/login" method="post" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
+<form
+  action="/login"
+  method="POST"
+  class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
+>
   <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-    <input name="mail" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="username" type="text" placeholder="Username">
-    <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="username">
-      Username
+    <input
+      name="username"
+      class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
+      id="username"
+      type="text"
+    />
+    <label
+      class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+      for="username"
+    >
+      ユーザー名
     </label>
   </div>
   <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-    <input name="password" class="w-full py-2 px-3 text-gray-700 leading-normal rounded" id="password" type="password" placeholder="Password">
-    <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">
-      Password
+    <input
+      name="password"
+      class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
+      id="password"
+      type="password"
+    />
+    <label
+      class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+      for="password"
+    >
+      パスワード
     </label>
   </div>
   <div class="flex items-center justify-between">
-    <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">
-    Sign In
-    </button>
-    <a class="inline-block align-baseline text-gray-500 hover:text-gray-700" href="#">
-      Forgot Password?
-    </a>
+    <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">ログイン</button>
   </div>
 </form>
 

@@ -8,5 +8,6 @@ router.get("/", (req, res) => {
 // Dynamic resources rooting.
 router.use("/bid", require("./bid.js"));
 router.use("/car", require("./car.js"));
+router.use("/login", require("./login.js"));
 
 module.exports = router;

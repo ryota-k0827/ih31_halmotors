@@ -1,484 +1,476 @@
 <!-- 車両登録画面 -->
-<%- include('../partials/header.ejs') %>
-<!-- <script>
-  function notNull() {
-    // Get the value of the input field with id="numb"
-    var result = document.getElementById("name").value;
-    // If x is Not a Number or less than one or greater than 10
-    var text;
-    if (result == "") {
-      text = "車両名が空白です。";
-    } else {
-      text = "OK";
-    }
-    document.getElementById("null").innerHTML = text;
-  }
-</script> -->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <%- include('../partials/header.ejs') %>
+    <title>車両登録画面</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <form
+      action="/manager/car/regist/confirm"
+      method="POST"
+      class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
+    >
+      <!-- 車両名 -->
+      <p>車両名</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="name"
+          type="text"
+          name="name"
+          placeholder="車両名を入力してください"
+          required
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="name"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
+      <!-- メーカー名 -->
+      <p>メーカー名</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="maker"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          required
+        >
+          <option>メーカーを選択してください</option>
+          <!-- 日本車メーカー -->
+          <option value="TOYOTA">TOYOTA</option>
+          <option value="LEXUS">LEXSUS</option>
+          <option value="NISSAN">NISSAN</option>
+          <option value="MITSUBISHI">MITSUBISHI</option>
+          <option value="HONDA">HONDA</option>
+          <option value="MAZDA">MAZDA</option>
+          <option value="SUBARU">SUBARU</option>
+          <option value="SUZUKI">SUZUKI</option>
+          <option value="DAIHATSU">DAIHATSU</option>
+          <option value="ISUZU">ISUZU</option>
+          <option value="光岡自動車">光岡自動車</option>
+          <option value="HINO">HINO</option>
+          <option value="UDトラック">UDトラック</option>
+          <!-- アメリカ車メーカー -->
+          <option value="ゼネラルモータース">ゼネラルモータース</option>
+          <option value="キャデラック">キャデラック</option>
+          <option value="ビュイック">ビュイック</option>
+          <option value="ポンテアック">ポンテアック</option>
+          <option value="シボレー">シボレー</option>
+          <option value="ハマー">ハマー</option>
+          <option value="GMC">GMC</option>
+          <option value="フォード・モーター">フォード・モーター</option>
+          <option value="リンカーン">リンカーン</option>
+          <option value="クライスラー">クライスラー</option>
+          <option value="クライスラー・ジープ">クライスラー・ジープ</option>
+          <option value="ダッジ">ダッジ</option>
+          <option value="テスラ">テスラ</option>
+          <option value="クライスラー">クライスラー</option>
+          <!-- イギリス車メーカー -->
+          <option value="ロールスロイス">ロールスロイス</option>
+          <option value="ベントレー">ベントレー</option>
+          <option value="ギャガー">ジャガー</option>
+          <option value="MINI">MINI</option>
+          <option value="ランドローバー">ランドローバー</option>
+          <option value="アストンマーチン">アストンマーチン</option>
+          <option value="ロータス">ロータス</option>
+          <option value="ケータハム">ケータハム</option>
+          <option value="マクラーレン">マクラーレン</option>
+          <option value="ウェストフィールド">ウェストフィールド</option>
+          <!-- ドイツ車メーカー -->
+          <option value="フォルクスワーゲン">フォルクスワーゲン</option>
+          <option value="アウディ">アウディ</option>
+          <option value="BMW">BMW</option>
+          <option value="ポルシェ">ポルシェ</option>
+          <option value="ダイムラー">ダイムラー</option>
+          <option value="メルセデス・ベンツ">メルセデス・ベンツ</option>
+          <option value="マイバッハ">マイバッハ</option>
+          <!-- イタリア車メーカー -->
+          <option value="フィアット">フィアット</option>
+          <option value="フェラーリ">フェラーリ</option>
+          <option value="ランボルギーニ">ランボルギーニ</option>
+          <option value="アルファ・ロメオ">アルファ・ロメオ</option>
+          <option value="マセラティ">マセラティ</option>
+          <option value="アバルト">アバルト</option>
+          <!-- フランス車メーカー -->
+          <option value="ルノー">ルノー</option>
+          <option value="シトロエン">シトロエン</option>
+          <option value="プジョー">プジョー</option>
+          <option value="ブガッティ">ブガッティ</option>
+        </select>
+      </div>
+      <!-- 車両評価（総合） -->
+      <p>車両評価（総合）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="evaluation"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>評価点を選択</option>
+          <option value="S">S</option>
+          <option value="6">6</option>
+          <option value="5">5</option>
+          <option value="4.5">4.5</option>
+          <option value="4">4</option>
+          <option value="3.5">3.5</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+          <option value="R">R</option>
+          <option value="X">X</option>
+        </select>
+      </div>
+      <!-- 車両評価（外装） -->
+      <p>車両評価（外装）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="outer_evaluation"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>評価点を選択</option>
+          <option value="3">3</option>
+          <option value="2.5">2.5</option>
+          <option value="2">2</option>
+          <option value="1.5">1.5</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <!-- 車両評価（内装） -->
+      <p>車両評価（内装）</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="inner_evaluation"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>評価点を選択</option>
+          <option value="3">3</option>
+          <option value="2.5">2.5</option>
+          <option value="2">2</option>
+          <option value="1.5">1.5</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <!-- 年式 -->
+      <p>年式</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="model_year"
+          type="number"
+          name="model_year"
+          placeholder="年式を入力してください"
+          required
+        />
+      </div>
+      <!-- ドア数 -->
+      <p>ドア数</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="door"
+          type="number"
+          name="door"
+          placeholder="ドア数を入力してください"
+        />
+      </div>
+      <!-- ボディタイプ -->
+      <p>ボディタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="shape"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>ボディタイプを選択</option>
+          <option value="軽自動車">軽自動車</option>
+          <option value="コンパクトカー">コンパクトカー</option>
+          <option value="ミニバン">ミニバン</option>
+          <option value="ステーションワゴン">ステーションワゴン</option>
+          <option value="SUV・クロカン">SUV・クロカン</option>
+          <option value="セダン">セダン</option>
+          <option value="キャンピングカー">キャンピングカー</option>
+          <option value="クーペ">クーペ</option>
+          <option value="ハイブリッド">ハイブリッド</option>
+          <option value="ハッチバック">ハッチバック</option>
+          <option value="オープンカー">オープンカー</option>
+          <option value="ピックアップトラック">ピックアップトラック</option>
+          <option value="福祉車両">福祉車両</option>
+          <option value="商用車・バン">商用車・バン</option>
+          <option value="トラック">トラック</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <!-- グレード -->
+      <p>グレード</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="grade"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>グレードを選択</option>
+          <option value="RS">RS</option>
+          <option value="GT">GT</option>
+          <option value="SSS">SSS</option>
+          <option value="Si">Si</option>
+          <option value="S">S</option>
+          <option value="C">C</option>
+          <option value="G">G</option>
+          <option value="D">D</option>
+          <option value="L">L</option>
+          <option value="X">X</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <!-- 車歴 -->
+      <p>車歴</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="history"
+          type="number"
+          name="history"
+          placeholder="車歴を入力してください"
+        />
+      </div>
+      <!-- 型式 -->
+      <p>型式</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="model"
+          type="text"
+          name="model"
+          placeholder="型式を入力してください"
+        />
+      </div>
+      <!-- 排気量 -->
+      <p>排気量</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="engine_size"
+          type="number"
+          name="engine_size"
+          placeholder="排気量を入力してください"
+        />
+      </div>
+      <!-- 油種 -->
+      <p>油種</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="fuel_type"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>燃料を選択してください</option>
+          <option value="レギュラー">レギュラー</option>
+          <option value="ハイオク">ハイオク</option>
+          <option value="軽油">軽油</option>
+        </select>
+      </div>
+      <!-- 車検日 -->
+      <p>車検日</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="inspection_day"
+          type="date"
+          name="inspection_day"
+          placeholder="例: 2022/01/01"
+        />
+      </div>
+      <!-- 走行距離 -->
+      <p>走行距離</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="mileage"
+          type="number"
+          name="mileage"
+          placeholder="走行距離を入力してください"
+        />
+      </div>
+      <!-- 外装色 -->
+      <p>外装色</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="outer_color"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>外装色を選択してください</option>
+          <option value="1">ホワイト</option>
+          <option value="2">レッド</option>
+          <option value="3">ブラック</option>
+          <option value="4">イエロー</option>
+          <option value="5">ブルー</option>
+          <option value="6">グリーン</option>
+          <option value="7">ブラウン</option>
+          <option value="8">ツートン</option>
+          <option value="9">シルバー</option>
+          <option value="">その他</option>
+        </select>
+      </div>
+      <!-- 内装色 -->
+      <p>内装色</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="inner_color"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>内装色を選択してください</option>
+          <option value="1">ホワイト</option>
+          <option value="2">レッド</option>
+          <option value="3">ブラック</option>
+          <option value="4">イエロー</option>
+          <option value="5">ブルー</option>
+          <option value="6">グリーン</option>
+          <option value="7">ブラウン</option>
+          <option value="8">ツートン</option>
+          <option value="9">シルバー</option>
+          <option value="">その他</option>
+        </select>
+      </div>
+      <!-- 色数 -->
+      <p>色数</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="color_number"
+          type="text"
+          name="color_number"
+          placeholder="色数を入力してください"
+        />
+      </div>
+      <!-- 車体番号 -->
+      <p>車体番号</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="identifier"
+          type="text"
+          name="identifier"
+          placeholder="車体番号を入力してください"
+        />
+      </div>
+      <!-- シフトタイプ -->
+      <p>シフトタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="shift_type"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>シフトタイプを選択してください</option>
+          <option value="1">フロア</option>
+          <option value="2">コラム</option>
+          <option value="3">インパネ</option>
+          <option value="">その他</option>
+        </select>
+      </div>
+      <!-- ギアタイプ -->
+      <p>ギアタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="gear_type"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>ギアタイプを選択してください</option>
+          <option value="MT">MT</option>
+          <option value="AT">AT</option>
+        </select>
+      </div>
+      <!-- エアコンタイプ -->
+      <p>エアコンタイプ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="ac_type"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>エアコンタイプを選択してください</option>
+          <option value="1">WAC</option>
+          <option value="2">AAC</option>
+          <option value="3">AC</option>
+          <option value="4">C</option>
+          <option value="5">無</option>
+        </select>
+      </div>
+      <!-- チェックボックス -->
+      <div class="etc">
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="ps" name="ps" value="1" />
+          <label for="ps" class="select-none">パワーステアリング</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="pw" name="pw" value="1" />
+          <label for="pw" class="select-none">パワーウィンドウ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="aw" name="aw" value="1" />
+          <label for="aw" class="select-none">アルミホイール</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="sr" name="sr" value="1" />
+          <label for="sr" class="select-none">サンルーフ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="tire" name="tire" value="1" />
+          <label for="tire" class="select-none">タイヤ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="leather_sheet" name="leather_sheet" value="1" />
+          <label for="leather_sheet" class="select-none">本革シート</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="ab" name="ab" value="1" />
+          <label for="ab" class="select-none">エアバック</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="tv" name="tv" value="1" />
+          <label for="tv" class="select-none">テレビ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="navi" name="navi" value="1" />
+          <label for="navi" class="select-none">ナビ</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="rear_spo" name="rear_spo" value="1" />
+          <label for="rear_spo" class="select-none">リアスポイラー</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="manual" name="manual" value="1" />
+          <label for="manual" class="select-none">取説</label>
+        </div>
+        <div class="flex items-center mr-4 mb-2">
+          <input type="checkbox" id="warranty" name="warranty" value="1" />
+          <label for="warranty" class="select-none">保証書</label>
+        </div>
+      </div>
+      <!-- その他車両情報 -->
+      <p>その他車両情報</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <textarea
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="other_option"
+          name="other_option"
+          placeholder="その他車両情報を入力してください"
+          rows="5"
+        ></textarea>
+      </div>
+      <!-- 検査員メモ -->
+      <p>検査員メモ</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <textarea
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="information"
+          name="information"
+          placeholder="検査員メモ"
+          rows="5"
+        ></textarea>
+      </div>
 
-<body>
-  <form
-    action="/manager/car/regist/confirm"
-    method="POST"
-    class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
-  >
-    <!-- 車両名 -->
-    <p>車両名</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="name"
-        type="text"
-        name="name"
-        placeholder="車両名を入力してください"
-        required
-      />
-      <label
-        class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
-        for="name"
-      >
-      </label>
-      <p id="null"></p>
-    </div>
-    <!-- メーカー名 -->
-    <p>メーカー名</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="maker"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        required
-      >
-        <option>メーカーを選択してください</option>
-        <!-- 日本車メーカー -->
-        <option value="TOYOTA">TOYOTA</option>
-        <option value="LEXUS">LEXSUS</option>
-        <option value="NISSAN">NISSAN</option>
-        <option value="MITSUBISHI">MITSUBISHI</option>
-        <option value="HONDA">HONDA</option>
-        <option value="MAZDA">MAZDA</option>
-        <option value="SUBARU">SUBARU</option>
-        <option value="SUZUKI">SUZUKI</option>
-        <option value="DAIHATSU">DAIHATSU</option>
-        <option value="ISUZU">ISUZU</option>
-        <option value="光岡自動車">光岡自動車</option>
-        <option value="HINO">HINO</option>
-        <option value="UDトラック">UDトラック</option>
-        <!-- アメリカ車メーカー -->
-        <option value="ゼネラルモータース">ゼネラルモータース</option>
-        <option value="キャデラック">キャデラック</option>
-        <option value="ビュイック">ビュイック</option>
-        <option value="ポンテアック">ポンテアック</option>
-        <option value="シボレー">シボレー</option>
-        <option value="ハマー">ハマー</option>
-        <option value="GMC">GMC</option>
-        <option value="フォード・モーター">フォード・モーター</option>
-        <option value="リンカーン">リンカーン</option>
-        <option value="クライスラー">クライスラー</option>
-        <option value="クライスラー・ジープ">クライスラー・ジープ</option>
-        <option value="ダッジ">ダッジ</option>
-        <option value="テスラ">テスラ</option>
-        <option value="クライスラー">クライスラー</option>
-        <!-- イギリス車メーカー -->
-        <option value="ロールスロイス">ロールスロイス</option>
-        <option value="ベントレー">ベントレー</option>
-        <option value="ギャガー">ジャガー</option>
-        <option value="MINI">MINI</option>
-        <option value="ランドローバー">ランドローバー</option>
-        <option value="アストンマーチン">アストンマーチン</option>
-        <option value="ロータス">ロータス</option>
-        <option value="ケータハム">ケータハム</option>
-        <option value="マクラーレン">マクラーレン</option>
-        <option value="ウェストフィールド">ウェストフィールド</option>
-        <!-- ドイツ車メーカー -->
-        <option value="フォルクスワーゲン">フォルクスワーゲン</option>
-        <option value="アウディ">アウディ</option>
-        <option value="BMW">BMW</option>
-        <option value="ポルシェ">ポルシェ</option>
-        <option value="ダイムラー">ダイムラー</option>
-        <option value="メルセデス・ベンツ">メルセデス・ベンツ</option>
-        <option value="マイバッハ">マイバッハ</option>
-        <!-- イタリア車メーカー -->
-        <option value="フィアット">フィアット</option>
-        <option value="フェラーリ">フェラーリ</option>
-        <option value="ランボルギーニ">ランボルギーニ</option>
-        <option value="アルファ・ロメオ">アルファ・ロメオ</option>
-        <option value="マセラティ">マセラティ</option>
-        <option value="アバルト">アバルト</option>
-        <!-- フランス車メーカー -->
-        <option value="ルノー">ルノー</option>
-        <option value="シトロエン">シトロエン</option>
-        <option value="プジョー">プジョー</option>
-        <option value="ブガッティ">ブガッティ</option>
-      </select>
-    </div>
-    <!-- 車両評価（総合） -->
-    <p>車両評価（総合）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="evaluation"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>評価点を選択</option>
-        <option value="S">S</option>
-        <option value="6">6</option>
-        <option value="5">5</option>
-        <option value="4.5">4.5</option>
-        <option value="4">4</option>
-        <option value="3.5">3.5</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-        <option value="R">R</option>
-        <option value="X">X</option>
-      </select>
-    </div>
-    <!-- 車両評価（外装） -->
-    <p>車両評価（外装）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="outer_evaluation"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>評価点を選択</option>
-        <option value="3">3</option>
-        <option value="2.5">2.5</option>
-        <option value="2">2</option>
-        <option value="1.5">1.5</option>
-        <option value="1">1</option>
-      </select>
-    </div>
-    <!-- 車両評価（内装） -->
-    <p>車両評価（内装）</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="inner_evaluation"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>評価点を選択</option>
-        <option value="3">3</option>
-        <option value="2.5">2.5</option>
-        <option value="2">2</option>
-        <option value="1.5">1.5</option>
-        <option value="1">1</option>
-      </select>
-    </div>
-    <!-- 年式 -->
-    <p>年式</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="model_year"
-        type="number"
-        name="model_year"
-        placeholder="年式を入力してください"
-        required
-      />
-    </div>
-    <!-- ドア数 -->
-    <p>ドア数</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="door"
-        type="number"
-        name="door"
-        placeholder="ドア数を入力してください"
-      />
-    </div>
-    <!-- ボディタイプ -->
-    <p>ボディタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="shape"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>ボディタイプを選択</option>
-        <option value="軽自動車">軽自動車</option>
-        <option value="コンパクトカー">コンパクトカー</option>
-        <option value="ミニバン">ミニバン</option>
-        <option value="ステーションワゴン">ステーションワゴン</option>
-        <option value="SUV・クロカン">SUV・クロカン</option>
-        <option value="セダン">セダン</option>
-        <option value="キャンピングカー">キャンピングカー</option>
-        <option value="クーペ">クーペ</option>
-        <option value="ハイブリッド">ハイブリッド</option>
-        <option value="ハッチバック">ハッチバック</option>
-        <option value="オープンカー">オープンカー</option>
-        <option value="ピックアップトラック">ピックアップトラック</option>
-        <option value="福祉車両">福祉車両</option>
-        <option value="商用車・バン">商用車・バン</option>
-        <option value="トラック">トラック</option>
-        <option value="その他">その他</option>
-      </select>
-    </div>
-    <!-- グレード -->
-    <p>グレード</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="grade"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>グレードを選択</option>
-        <option value="RS">RS</option>
-        <option value="GT">GT</option>
-        <option value="SSS">SSS</option>
-        <option value="Si">Si</option>
-        <option value="S">S</option>
-        <option value="C">C</option>
-        <option value="G">G</option>
-        <option value="D">D</option>
-        <option value="L">L</option>
-        <option value="X">X</option>
-        <option value="その他">その他</option>
-      </select>
-    </div>
-    <!-- 車歴 -->
-    <p>車歴</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="history"
-        type="number"
-        name="history"
-        placeholder="車歴を入力してください"
-      />
-    </div>
-    <!-- 型式 -->
-    <p>型式</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="model"
-        type="text"
-        name="model"
-        placeholder="型式を入力してください"
-      />
-    </div>
-    <!-- 排気量 -->
-    <p>排気量</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="engine_size"
-        type="number"
-        name="engine_size"
-        placeholder="排気量を入力してください"
-      />
-    </div>
-    <!-- 油種 -->
-    <p>油種</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="fuel_type"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>燃料を選択してください</option>
-        <option value="レギュラー">レギュラー</option>
-        <option value="ハイオク">ハイオク</option>
-        <option value="軽油">軽油</option>
-      </select>
-    </div>
-    <!-- 車検日 -->
-    <p>車検日</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="inspection_day"
-        type="date"
-        name="inspection_day"
-        placeholder="例: 2022/01/01"
-      />
-    </div>
-    <!-- 走行距離 -->
-    <p>走行距離</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="mileage"
-        type="number"
-        name="mileage"
-        placeholder="走行距離を入力してください"
-      />
-    </div>
-    <!-- 外装色 -->
-    <p>外装色</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="outer_color"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>外装色を選択してください</option>
-        <option value="1">ホワイト</option>
-        <option value="2">レッド</option>
-        <option value="3">ブラック</option>
-        <option value="4">イエロー</option>
-        <option value="5">ブルー</option>
-        <option value="6">グリーン</option>
-        <option value="7">ブラウン</option>
-        <option value="8">ツートン</option>
-        <option value="9">シルバー</option>
-        <option value="">その他</option>
-      </select>
-    </div>
-    <!-- 内装色 -->
-    <p>内装色</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="inner_color"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>内装色を選択してください</option>
-        <option value="1">ホワイト</option>
-        <option value="2">レッド</option>
-        <option value="3">ブラック</option>
-        <option value="4">イエロー</option>
-        <option value="5">ブルー</option>
-        <option value="6">グリーン</option>
-        <option value="7">ブラウン</option>
-        <option value="8">ツートン</option>
-        <option value="9">シルバー</option>
-        <option value="">その他</option>
-      </select>
-    </div>
-    <!-- 色数 -->
-    <p>色数</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="color_number"
-        type="text"
-        name="color_number"
-        placeholder="色数を入力してください"
-      />
-    </div>
-    <!-- 車体番号 -->
-    <p>車体番号</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <input
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="identifier"
-        type="text"
-        name="identifier"
-        placeholder="車体番号を入力してください"
-      />
-    </div>
-    <!-- シフトタイプ -->
-    <p>シフトタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="shift_type"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>シフトタイプを選択してください</option>
-        <option value="1">フロア</option>
-        <option value="2">コラム</option>
-        <option value="3">インパネ</option>
-        <option value="">その他</option>
-      </select>
-    </div>
-    <!-- ギアタイプ -->
-    <p>ギアタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="gear_type"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>ギアタイプを選択してください</option>
-        <option value="MT">MT</option>
-        <option value="AT">AT</option>
-      </select>
-    </div>
-    <!-- エアコンタイプ -->
-    <p>エアコンタイプ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <select
-        name="ac_type"
-        class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option>エアコンタイプを選択してください</option>
-        <option value="1">WAC</option>
-        <option value="2">AAC</option>
-        <option value="3">AC</option>
-        <option value="4">C</option>
-        <option value="5">無</option>
-      </select>
-    </div>
-    <!-- チェックボックス -->
-    <div class="etc">
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="ps" name="ps" value="1" />
-        <label for="ps" class="select-none">パワーステアリング</label>
+      <div class="flex items-center justify-between">
+        <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">確認</button>
       </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="pw" name="pw" value="1" />
-        <label for="pw" class="select-none">パワーウィンドウ</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="aw" name="aw" value="1" />
-        <label for="aw" class="select-none">アルミホイール</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="sr" name="sr" value="1" />
-        <label for="sr" class="select-none">サンルーフ</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="tire" name="tire" value="1" />
-        <label for="tire" class="select-none">タイヤ</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="leather_sheet" name="leather_sheet" value="1" />
-        <label for="leather_sheet" class="select-none">本革シート</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="ab" name="ab" value="1" />
-        <label for="ab" class="select-none">エアバック</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="tv" name="tv" value="1" />
-        <label for="tv" class="select-none">テレビ</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="navi" name="navi" value="1" />
-        <label for="navi" class="select-none">ナビ</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="rear_spo" name="rear_spo" value="1" />
-        <label for="rear_spo" class="select-none">リアスポイラー</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="manual" name="manual" value="1" />
-        <label for="manual" class="select-none">取説</label>
-      </div>
-      <div class="flex items-center mr-4 mb-2">
-        <input type="checkbox" id="warranty" name="warranty" value="1" />
-        <label for="warranty" class="select-none">保証書</label>
-      </div>
-    </div>
-    <!-- その他車両情報 -->
-    <p>その他車両情報</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <textarea
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="other_option"
-        name="other_option"
-        placeholder="その他車両情報を入力してください"
-        rows="5"
-      ></textarea>
-    </div>
-    <!-- 検査員メモ -->
-    <p>検査員メモ</p>
-    <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-      <textarea
-        class="w-full py-2 px-3 text-black-700 leading-normal rounded"
-        id="information"
-        name="information"
-        placeholder="検査員メモ"
-        rows="5"
-      ></textarea>
-    </div>
-
-    <div class="flex items-center justify-between">
-      <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">確認</button>
-    </div>
-  </form>
-</body>
-<%- include('../partials/footer.ejs') %>
+    </form>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

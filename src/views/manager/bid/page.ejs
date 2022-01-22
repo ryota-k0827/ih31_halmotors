@@ -1,10 +1,10 @@
 <!--商品詳細ページ(管理者側)-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
-    <%- include('../partials/header.ejs') %>
-    <title>商品ページ</title>
+    <%- include('../../manager/partials/header.ejs') %>
+    <title>出品車両ページ</title>
     <style>
       .top{
         display: flex;
@@ -38,7 +38,8 @@
     </style>
   </head>
   <body>
-
+    <%- include('../partials/navbar.ejs') %>
+    <br>
     <div class="top">
       <img src="/public/img/<%= name %>.jpg">
       <div class="car_name">
@@ -256,6 +257,6 @@
             </p>
           </div>
     </div>
-  
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
