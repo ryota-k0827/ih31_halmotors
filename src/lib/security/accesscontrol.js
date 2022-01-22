@@ -39,7 +39,13 @@ passport.use(
           mail: results[0].mail,
           permissions: [PRIVILEGE.NORMAL],
         };
-        done(null, user);
+        req.session.regenerate((err) => {
+          if (err) {
+            done(err);
+          } else {
+            done(null, user);
+          }
+        });
       } else {
         done(
           null,
