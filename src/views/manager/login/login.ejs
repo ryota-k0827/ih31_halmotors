@@ -1,6 +1,6 @@
 <!--ログイン画面（管理者側）-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <%- include('../partials/header.ejs') %>
     <title>管理者ページ: ログイン</title>
@@ -17,13 +17,14 @@
           name="username"
           class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
           id="username"
-          type="text"
+          type="email"
+          required
         />
         <label
           class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
           for="username"
         >
-          ユーザー名
+          メールアドレス
         </label>
       </div>
       <div class="relative border rounded mb-4 shadow appearance-none label-floating">
@@ -32,6 +33,7 @@
           class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
           id="password"
           type="password"
+          required
         />
         <label
           class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
@@ -43,6 +45,11 @@
       <div class="flex items-center justify-between">
         <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">ログイン</button>
       </div>
+      <% if (message && message.length !== 0) { %>
+      <div class="text-center border rounded w-full px-3 py-2 bg-pink-100 text-red-700">
+        <%= message %>
+      </div>
+      <% } %>
     </form>
     <%- include('../partials/footer.ejs') %>
   </body>
