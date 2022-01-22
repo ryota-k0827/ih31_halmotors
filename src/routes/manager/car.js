@@ -46,8 +46,14 @@ router.post("/regist/confirm", (req, res) => {
     other_option: req.body.other_option,
     information: req.body.information,
   };
+  // for (var key in data) {
+  //   if (data[key] === undefined || data[key] === "") {
+  //     data[key] = null;
+  //   }
+  // }
+  console.log(data);
 
-  res.render("./manager/car/regist-comfirm.ejs", data);
+  res.render("./manager/car/regist-confirm.ejs", data);
 });
 
 // 車両登録処理
@@ -90,7 +96,14 @@ router.post("/regist/execute", async (req, res, next) => {
     other_option: req.body.other_option,
     information: req.body.information,
   };
-
+  for (var key in data) {
+    if (data[key] === undefined) {
+      data[key] = "";
+    }
+  }
+  // console.log("確認画面からのうけとり");
+  // console.log(data);
+  // res.redirect("/manager/car/regist/complete");
   try {
     await MySQLClient.executeQuery(await sql("INSERT_CAR"), data);
     res.redirect("/manager/car/regist/complete");
