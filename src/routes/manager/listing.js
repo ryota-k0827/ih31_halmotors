@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
   try {
     results = await MySQLClient.executeQuery(await sql("SELECT_CAR_LIST"));
     // console.log(results);
-    res.render("./manager/bid/list.ejs", { results });
+    res.render("./manager/listing/list.ejs", { results });
   } catch (err) {
     next(err);
   }
@@ -26,7 +26,7 @@ router.get("/:id", async (req, res, next) => {
       let data = results[0][0];
       data.bid = results[1][0] || [];
       console.log(data);
-      res.render("./manager/bid/page.ejs", data);
+      res.render("./manager/listing/car-page.ejs", data);
     })
     .catch((err) => {
       next(err);

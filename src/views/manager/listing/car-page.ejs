@@ -26,6 +26,13 @@
         margin-left: 30px;
         
       }
+      .button1{
+        font-size: 30px;
+        width: 500px;
+        background-color: red;
+        text-align: center;
+        border:  2px solid #000;
+      }
       .button2{
         padding-top: 8px;
         font-size: 30px;
@@ -34,6 +41,13 @@
         text-align: center;
         border:  2px solid #000;
         height: 90px;
+      }
+      .input-text{
+        width: 500px;
+        height: 50px;
+        font-size: 30px;
+        border: 2px solid #000;
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -44,6 +58,10 @@
       <div class="car_name">
         <h1><%= name %></h1>
         <h2>現在の価格 <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
+        <form action="/bid/confirm/<%= listing_id %>" method="POST">
+          <input type="hidden" id="name" name="name" value="<%= name %>" />
+          <button class="button1" type="submit">出品取り消し</button>
+        </form>
         <div class="button2">  
           <h2>残り時間&nbsp;&nbsp;<br>00:00</h2>
         </div>

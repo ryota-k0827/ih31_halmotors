@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 // Dynamic resources rooting.
-router.use("/bid", require("./bid.js"));
+router.use("/listing", require("./listing.js"));
 router.use("/car", require("./car.js"));
 
 module.exports = router;
