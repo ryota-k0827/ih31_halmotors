@@ -63,7 +63,7 @@ app.use("/login", require("./routes/login.js"));
 app.use("/signup", require("./routes/signup.js"));
 app.use("/unsubscribe", require("./routes/unsubscribe.js"));
 app.use("/search", require("./routes/search.js"));
-app.use("/bid", require("./routes/bid/bid.js"));
+app.use("/bid", require("./routes/bid.js"));
 app.use("/mypage", require("./routes/mypage.js"));
 app.use("/manager", require("./routes/manager/manager.js"));
 

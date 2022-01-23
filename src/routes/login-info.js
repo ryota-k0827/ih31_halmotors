@@ -1,3 +1,4 @@
+// 未使用モジュール
 const { MySQLClient, sql } = require("../lib/database/client.js");
 let userArray;
 

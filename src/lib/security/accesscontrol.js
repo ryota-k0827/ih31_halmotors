@@ -77,8 +77,19 @@ authenticate = function () {
   });
 };
 
+authorize = function (privilege) {
+  return function (req, res, next) {
+    if (req.isAuthenticated() && (req.user.permissions || []).indexOf(privilege) >= 0) {
+      next();
+    } else {
+      res.redirect("/login");
+    }
+  };
+};
+
 module.exports = {
   initialize, //
   authenticate, //認証処理
   authorize, //認可処理
+  PRIVILEGE,
 };
