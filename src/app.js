@@ -59,12 +59,9 @@ app.use(...accesscontrol.initialize());
 
 // Dynamic resources rooting.
 app.use("/", require("./routes/index.js"));
-app.use("/login", require("./routes/login.js"));
-app.use("/signup", require("./routes/signup.js"));
-app.use("/unsubscribe", require("./routes/unsubscribe.js"));
+app.use("/account", require("./routes/account.js"));
 app.use("/search", require("./routes/search.js"));
 app.use("/bid", require("./routes/bid.js"));
-app.use("/mypage", require("./routes/mypage.js"));
 app.use("/manager", require("./routes/manager/manager.js"));
 
 // Set application log.

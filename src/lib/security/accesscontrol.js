@@ -73,7 +73,7 @@ initialize = function () {
 authenticate = function () {
   return passport.authenticate("local-strategy", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/account/login",
   });
 };
 
@@ -82,7 +82,7 @@ authorize = function (privilege) {
     if (req.isAuthenticated() && (req.user.permissions || []).indexOf(privilege) >= 0) {
       next();
     } else {
-      res.redirect("/login");
+      res.redirect("/account/login");
     }
   };
 };
