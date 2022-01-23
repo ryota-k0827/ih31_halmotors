@@ -12,7 +12,7 @@ SELECT
   birthday,
   penalty
 FROM
-  customer
+  user
 WHERE
   del_flg = 0
   AND

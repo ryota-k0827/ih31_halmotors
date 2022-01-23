@@ -1,5 +1,10 @@
 const router = require("express").Router();
-const { authenticate, authorize, PRIVILEGE } = require("../lib/security/accesscontrol.js");
+const {
+  authenticate,
+  authorize,
+  PRIVILEGE,
+  // accessPage,
+} = require("../lib/security/accesscontrol.js");
 
 // 新規登録画面
 router.get("/signup", (req, res) => {
@@ -8,11 +13,12 @@ router.get("/signup", (req, res) => {
 
 // ログインページ
 router.get("/login", (req, res, next) => {
+  // accessPage("general");
   res.render("./account/login.ejs", { message: req.flash("message") });
 });
 
 // ログイン処理
-router.post("/login", authenticate());
+router.post("/login", authenticate("hogehoge"));
 
 // マイページ表示
 router.get("/mypage", authorize(PRIVILEGE.NORMAL), (req, res) => {
@@ -26,7 +32,7 @@ router.get("/logout", (req, res, next) => {
 });
 
 // 退会ページ
-router.get("/", (req, res) => {
+router.get("/unsubscribe", (req, res) => {
   res.render("./account/unsubscribe.ejs");
 });
 

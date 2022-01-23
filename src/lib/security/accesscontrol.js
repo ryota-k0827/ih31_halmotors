@@ -4,7 +4,15 @@ const { MySQLClient, sql } = require("../database/client.js");
 const PRIVILEGE = {
   NORMAL: "normal",
 };
-let initialize, authenticate, authorize;
+
+let initialize,
+  authenticate,
+  authorize,
+  adminAuthMiddleware,
+  accessPage,
+  successRedirect,
+  failureRedirect,
+  category;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -25,7 +33,7 @@ passport.use(
     async (req, username, password, done) => {
       let results, user;
       try {
-        results = await MySQLClient.executeQuery(await sql("SELECT_CUSTOMER_USER_BY_EMAIL"), [
+        results = await MySQLClient.executeQuery(await sql("SELECT_LOGIN_USER_BY_EMAIL"), [
           username,
         ]);
       } catch (err) {
@@ -39,13 +47,17 @@ passport.use(
           mail: results[0].mail,
           permissions: [PRIVILEGE.NORMAL],
         };
-        req.session.regenerate((err) => {
-          if (err) {
-            done(err);
-          } else {
-            done(null, user);
-          }
-        });
+        if (category === "manager" && user.category !== "従業員") {
+          return done(null, false, req.flash("message", "管理者以外はアクセスできません"));
+        } else {
+          req.session.regenerate((err) => {
+            if (err) {
+              done(err);
+            } else {
+              done(null, user);
+            }
+          });
+        }
       } else {
         done(
           null,
@@ -70,10 +82,19 @@ initialize = function () {
   ];
 };
 
-authenticate = function () {
+authenticate = function (page) {
+  if (page === "manager") {
+    [category, successRedirect, failureRedirect] = [
+      "manager",
+      "/manager",
+      "/manager/account/login",
+    ];
+  } else {
+    [category, successRedirect, failureRedirect] = ["general", "/", "/account/login"];
+  }
   return passport.authenticate("local-strategy", {
-    successRedirect: "/",
-    failureRedirect: "/account/login",
+    successRedirect: successRedirect,
+    failureRedirect: failureRedirect,
   });
 };
 
@@ -87,9 +108,27 @@ authorize = function (privilege) {
   };
 };
 
+adminAuthMiddleware = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.category === "従業員") {
+    next();
+  } else {
+    res.redirect(302, "/manager/account/login");
+  }
+};
+
+// accessPage = function (page) {
+//   if (page === "manager") {
+//     [category, successRedirect, failureRedirect] = [page, "/manager", "/manager/account/login"];
+//   } else {
+//     [category, successRedirect, failureRedirect] = [page, "/", "/account/login"];
+//   }
+// };
+
 module.exports = {
   initialize, //
   authenticate, //認証処理
   authorize, //認可処理
   PRIVILEGE,
+  adminAuthMiddleware, //管理者認証処理
+  // accessPage, //アクセスページ
 };

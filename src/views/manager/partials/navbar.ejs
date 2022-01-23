@@ -9,10 +9,33 @@
         </a>
         <p>管理者ページ</p>
       </div>
+      <% if(locals.user) { %>
+      <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+        <li>
+          <p>こんにちは、<%= (locals.user.name || "名無し") %>さん。</p>
+        </li>
+        <li>
+          <a
+            href="/manager/account/mypage"
+            class="bg-gray-500 hover:bg-text-gray-800 text-white ml-4 py-2 px-3"
+          >
+            マイページ
+          </a>
+        </li>
+        <li>
+          <a
+            href="/manager/account/logout"
+            class="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3"
+          >
+            ログアウト
+          </a>
+        </li>
+      </ul>
+      <% } else { %>
       <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
         <li>
           <a
-            href="/manager/login"
+            href="/manager/account/login"
             class="bg-gray-500 hover:bg-text-gray-800 text-white ml-4 py-2 px-3"
           >
             ログイン
@@ -20,13 +43,14 @@
         </li>
         <li>
           <a
-            href="/manager/signup"
+            href="/manager/account/signup"
             class="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3"
           >
             従業員登録
           </a>
         </li>
       </ul>
+      <% } %>
     </nav>
   </div>
 </header>
