@@ -38,6 +38,7 @@ router.get("/bid/:id", async (req, res, next) => {
     .then((results) => {
       let data = results[0][0];
       data.bid = results[1][0] || [];
+      data.page_id = id;
       console.log(data);
       res.render("./search/bid.ejs", data);
     })

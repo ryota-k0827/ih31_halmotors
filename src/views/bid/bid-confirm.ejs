@@ -56,9 +56,10 @@
 </form>
 <script src="/socket.io/socket.io.js"></script>
 <script>
+  let pageId = document.getElementById("listingId").value;
   const socketio = io();
   // サーバーから受信
-  socketio.on("s2c", (msg) => {
+  socketio.on("s2c/" + pageId, (msg) => {
     console.log(msg);
     alert("価格が変更されました。");
     let inputText = document.getElementById("price");
@@ -70,7 +71,11 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const price = document.getElementById("price").value;
-    socketio.emit("c2s", price);
+    let sendData = {
+      pageId: pageId,
+      price: price,
+    };
+    socketio.emit("c2s", sendData);
   });
 </script>
 <%- include('../partials/footer.ejs') %>

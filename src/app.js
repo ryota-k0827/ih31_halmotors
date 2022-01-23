@@ -78,9 +78,9 @@ httpSocket.listen(appconfig.PORT, () => {
 ioSocket.on("connection", (socket) => {
   logger.application.info("A client connected.");
   // ブラウザから受信
-  socket.on("c2s", (msg) => {
-    logger.application.info("入札: " + msg + "円");
+  socket.on("c2s", (data) => {
+    logger.application.info("入札: " + data.price + "円");
     // ブラウザへ送信
-    ioSocket.emit("s2c", msg);
+    ioSocket.emit("s2c/" + data.pageId, data.price);
   });
 });
