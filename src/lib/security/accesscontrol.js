@@ -5,13 +5,7 @@ const PRIVILEGE = {
   NORMAL: "normal",
 };
 
-let initialize,
-  authenticate,
-  authorize,
-  adminAuthMiddleware,
-  successRedirect,
-  failureRedirect,
-  category;
+let initialize, authenticate, authorize, adminAuthMiddleware;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -46,8 +40,51 @@ passport.use(
           mail: results[0].mail,
           permissions: [PRIVILEGE.NORMAL],
         };
-        if (category === "manager" && user.category !== "従業員") {
-          return done(null, false, req.flash("message", "管理者以外はアクセスできません"));
+        req.session.regenerate((err) => {
+          if (err) {
+            done(err);
+          } else {
+            done(null, user);
+          }
+        });
+      } else {
+        done(
+          null,
+          false,
+          req.flash("message", "メールアドレス または パスワードが間違っています。")
+        );
+      }
+    }
+  )
+);
+
+passport.use(
+  "manager-strategy",
+  new LocalStrategy(
+    {
+      usernameField: "username",
+      passwordField: "password",
+      passReqToCallback: true,
+    },
+    async (req, username, password, done) => {
+      let results, user;
+      try {
+        results = await MySQLClient.executeQuery(await sql("SELECT_LOGIN_USER_BY_EMAIL"), [
+          username,
+        ]);
+      } catch (err) {
+        return done(err);
+      }
+      if (results.length === 1 && password === results[0].password) {
+        user = {
+          id: results[0].id,
+          name: results[0].name,
+          category: results[0].category,
+          mail: results[0].mail,
+          permissions: [PRIVILEGE.NORMAL],
+        };
+        if (user.category !== "従業員") {
+          return done(null, false, req.flash("message", "従業員以外はアクセスできません"));
         } else {
           req.session.regenerate((err) => {
             if (err) {
@@ -83,18 +120,16 @@ initialize = function () {
 
 authenticate = function (page) {
   if (page === "manager") {
-    [category, successRedirect, failureRedirect] = [
-      "manager",
-      "/manager",
-      "/manager/account/login",
-    ];
+    return passport.authenticate("manager-strategy", {
+      successRedirect: "/manager",
+      failureRedirect: "/manager/account/login",
+    });
   } else {
-    [category, successRedirect, failureRedirect] = ["general", "/", "/account/login"];
+    return passport.authenticate("local-strategy", {
+      successRedirect: "/",
+      failureRedirect: "/account/login",
+    });
   }
-  return passport.authenticate("local-strategy", {
-    successRedirect: successRedirect,
-    failureRedirect: failureRedirect,
-  });
 };
 
 authorize = function (privilege) {
@@ -111,6 +146,7 @@ adminAuthMiddleware = (req, res, next) => {
   if (req.isAuthenticated() && req.user.category === "従業員") {
     next();
   } else {
+    req.flash("message", "従業員以外はアクセスできません");
     res.redirect(302, "/manager/account/login");
   }
 };

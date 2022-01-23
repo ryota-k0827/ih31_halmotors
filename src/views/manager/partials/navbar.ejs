@@ -9,7 +9,7 @@
         </a>
         <p>管理者ページ</p>
       </div>
-      <% if(locals.user) { %>
+      <% if(locals.user && (locals.user.category === "従業員")) { %>
       <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
         <li>
           <p>こんにちは、<%= (locals.user.name || "名無し") %>さん。</p>
