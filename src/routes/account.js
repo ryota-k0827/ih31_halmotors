@@ -25,6 +25,16 @@ router.get("/mypage", authorize(PRIVILEGE.NORMAL), (req, res) => {
   res.render("./account/mypage.ejs");
 });
 
+// 入札リスト表示
+router.get("/bid", authorize(PRIVILEGE.NORMAL), (req, res) => {
+  res.render("./account/bidlist.ejs");
+});
+
+// 落札リスト表示
+router.get("/buy", authorize(PRIVILEGE.NORMAL), (req, res) => {
+  res.render("./account/buylist.ejs");
+});
+
 // ログアウト処理
 router.get("/logout", (req, res, next) => {
   req.logout();

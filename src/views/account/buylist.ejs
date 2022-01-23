@@ -1,0 +1,83 @@
+<!--入札一覧-->
+<!-- jQueryのリンク　../../public/js/jquety.min.js-->
+
+<style>
+    .title {
+        font-size: larger;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .pager {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .pagination li:not(:nth-child(1)) {
+        margin-left: 30px;
+    }
+
+    .pagination :hover {
+        color: red;
+    }
+</style>
+
+<%- include('../partials/header.ejs') %>
+
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/paginathing.min.js"></script>
+
+    <div class="title">
+        <h1>落札一覧画面</h1>
+    </div>
+
+    <div class="pager">
+        <!-- 
+        出力は values[i].カラム名 にしてます。 
+    -->
+        <% for (var i=0; i < 10; i++) { %>
+            <div class="w-full md:w-1/2 lg:w-1/3 flex flex-col mb-8 px-3" id="pagenation">
+                
+                    <div
+                        class="overflow-hidden bg-white rounded-lg shadow hover:shadow-raised hover:translateY-2px transition">
+                        <img class="w-full" src="../../public/img/escalade.png" id="target"
+                            alt="Sunset in the mountains">
+                        <div class="p-6 flex flex-col justify-between ">
+                            <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="car_name">aaa </h3>
+                            <p class="inline-flex items-center">
+                                <span class="text-gray-700 text-sm">Read More</span>
+                            </p>
+                        </div>
+                    </div>
+                
+            </div>
+            <% } %>
+    </div>
+
+    <script>
+        //画像ソース
+        target.src = "../../";
+        // var img = document.getElementById('target');
+        // target.setAttribute('src','/img/escalade.png');
+
+        //pager操作
+        $(function () {
+            $('.pager').paginathing({//親要素のclassを記述
+                perPage: 9,//1ページあたりの表示件数
+                prevText: '前へ',//1つ前のページへ移動するボタンのテキスト
+                nextText: '次へ',//1つ次のページへ移動するボタンのテキスト
+                activeClass: 'navi-active',//現在のページ番号に任意のclassを付与できます
+                firstLast: false
+            })
+        });
+    </script>
+
+    <%- include('../partials/footer.ejs') %>
