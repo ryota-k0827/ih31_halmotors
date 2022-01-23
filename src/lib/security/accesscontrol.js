@@ -9,7 +9,6 @@ let initialize,
   authenticate,
   authorize,
   adminAuthMiddleware,
-  accessPage,
   successRedirect,
   failureRedirect,
   category;

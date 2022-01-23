@@ -1,11 +1,6 @@
 const router = require("express").Router();
 
-const {
-  authenticate,
-  authorize,
-  PRIVILEGE,
-  adminAuthMiddleware,
-} = require("../../lib/security/accesscontrol.js");
+const { adminAuthMiddleware } = require("../../lib/security/accesscontrol.js");
 
 // 管理者ページ表示
 router.get("/", adminAuthMiddleware, (req, res) => {

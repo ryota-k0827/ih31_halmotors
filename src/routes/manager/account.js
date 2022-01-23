@@ -1,12 +1,6 @@
 const router = require("express").Router();
 // const { MySQLClient, sql } = require("../../lib/database/client.js");
-const {
-  authenticate,
-  authorize,
-  PRIVILEGE,
-  adminAuthMiddleware,
-  // accessPage,
-} = require("../../lib/security/accesscontrol.js");
+const { authenticate, adminAuthMiddleware } = require("../../lib/security/accesscontrol.js");
 
 // ログインページ
 router.get("/login", (req, res) => {
@@ -18,7 +12,7 @@ router.get("/login", (req, res) => {
 router.post("/login", authenticate("manager"));
 
 // マイページ表示
-router.get("/mypage", authorize(PRIVILEGE.NORMAL), (req, res) => {
+router.get("/mypage", adminAuthMiddleware, (req, res) => {
   res.render("./manager/account/mypage.ejs");
 });
 
@@ -29,7 +23,7 @@ router.get("/logout", (req, res, next) => {
 });
 
 // 退会ページ
-router.get("/unsubscribe", (req, res) => {
+router.get("/unsubscribe", adminAuthMiddleware, (req, res) => {
   res.render("./manager/account/unsubscribe.ejs");
 });
 
