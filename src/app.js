@@ -6,16 +6,19 @@ const logger = require("./lib/log/logger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
 const accesscontrol = require("./lib/security/accesscontrol.js");
-// const http = require("http");
-// const socketio = require("socket.io");
 const express = require("express");
 const cookie = require("cookie-parser");
 const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 const flash = require("connect-flash");
 const app = express();
-// const server = http.Server(app);
-// const io = socketio.io(server);
+const httpSocket = require("http").Server(app);
+const ioSocket = require("socket.io")(httpSocket);
+
+// オークションタイマー
+let hours = 10;
+let minutes = 0;
+let seconds = 0;
 
 // Express Settings.
 app.set("view engine", "ejs");
@@ -68,15 +71,16 @@ app.use("/manager", require("./routes/manager/manager.js"));
 app.use(applicationlogger());
 
 // Execute web application.
-app.listen(appconfig.PORT, () => {
+httpSocket.listen(appconfig.PORT, () => {
   logger.application.info(`Application listening at ${appconfig.PORT}`);
 });
 
-// ログイン処理
-// const loginModule = require("./routes/login-info.js");
-// loginModule.userList;
-// console.log(loginModule.userArray);
-
-// io.on("connection", (socker) => {
-//   console.log("Connected is socket.");
-// });
+ioSocket.on("connection", (socket) => {
+  logger.application.info("A client connected.");
+  // ブラウザから受信
+  socket.on("c2s", (msg) => {
+    logger.application.info("入札: " + msg + "円");
+    // ブラウザへ送信
+    ioSocket.emit("s2c", msg);
+  });
+});

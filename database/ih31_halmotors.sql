@@ -1,20 +1,12 @@
 CREATE DATABASE IF NOT EXISTS `ih31_halmotors` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `ih31_halmotors`;
 
-CREATE TABLE `employees` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL COMMENT '従業員名',
-  `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
-  `password` char(30) NOT NULL COMMENT 'パスワード',
-  `del_flg` boolean NOT NULL DEFAULT false COMMENT '削除フラグ'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4, COLLATE=utf8mb4_general_ci, COMMENT='従業員';
-
-CREATE TABLE `customer` (
+CREATE TABLE `user` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `password` char(30) NOT NULL,
-  `category` ENUM('個人','法人') NOT NULL COMMENT '顧客区分',
-  `postal_code` int(7) NOT NULL COMMENT '郵便番号',
+  `category` ENUM('個人','法人','従業員') NOT NULL COMMENT '顧客区分',
+  `postal_code` varchar(10) NOT NULL COMMENT '郵便番号',
   `address1` varchar(255) NOT NULL COMMENT '都道府県',
   `address2` varchar(255) NOT NULL COMMENT '市町村',
   `address3` varchar(255) NOT NULL COMMENT '番地',
@@ -23,7 +15,7 @@ CREATE TABLE `customer` (
   `birthday` date NOT NULL COMMENT '生年月日',
   `penalty` int DEFAULT 0 COMMENT 'ペナルティ回数',
   `del_flg` boolean NOT NULL DEFAULT false COMMENT '削除フラグ'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='顧客';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='顧客・従業員';
 
 CREATE TABLE `card` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -106,7 +98,7 @@ CREATE TABLE `purchase` (
 
 ALTER TABLE `bid` ADD FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`);
 
-ALTER TABLE `bid` ADD FOREIGN KEY (`person_id`) REFERENCES `customer` (`id`);
+ALTER TABLE `bid` ADD FOREIGN KEY (`person_id`) REFERENCES `user` (`id`);
 
 -- ALTER TABLE `bid` ADD FOREIGN KEY (`id`) REFERENCES `buy` (`bid_id`);
 ALTER TABLE `buy` ADD FOREIGN KEY (`bid_id`) REFERENCES `bid` (`id`);
@@ -117,6 +109,6 @@ ALTER TABLE `listing` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 -- ALTER TABLE `car` ADD FOREIGN KEY (`id`) REFERENCES `purchase` (`car_id`);
 ALTER TABLE `purchase` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 
-ALTER TABLE `purchase` ADD FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+ALTER TABLE `purchase` ADD FOREIGN KEY (`employee_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `card` ADD FOREIGN KEY (`person_id`) REFERENCES `customer` (`id`);
+ALTER TABLE `card` ADD FOREIGN KEY (`person_id`) REFERENCES `user` (`id`);

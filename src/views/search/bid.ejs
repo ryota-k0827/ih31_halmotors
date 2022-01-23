@@ -51,10 +51,10 @@
     <img src="/public/img/<%= name %>.jpg">
     <div class="car_name">
       <h1><%= name %></h1>
-      <h2>現在の価格 <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
+      <h2 id="getPrice">現在の価格 <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
         <form action="/bid/confirm/<%= listing_id %>" method="POST">
           <input type="hidden" id="name" name="name" value="<%= name %>" />
-          <input type="number" class="input-text" id="price" name="price" autofocus="autofocus" required placeholder="<%= flg=(bid.price)?Number(bid.price+1).toLocaleString():Number(start_price+1).toLocaleString(); %>"/><br>
+          <input type="number" class="input-text" id="price" name="price" autofocus="autofocus" required min="<%= flg=(bid.price)?Number(bid.price+1000):Number(start_price+1000); %>" value="<%= flg=(bid.price)?Number(bid.price+1000):Number(start_price+1000); %>" step="1000"/><br>
           <button class="button1" type="submit">入札する</button>
         </form>
       <div class="button2">  
@@ -269,12 +269,21 @@
           </p>
         </div>
   </div>
-  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // サーバーから受信
+    const socketio = io();
+    socketio.on("s2c", (msg) => {
+      console.log(msg);
+      let h2 = document.getElementById("getPrice");
+      let inputText = document.getElementById("price");
+      h2.innerText = "現在の価格 " + Number(msg).toLocaleString() + "円";
+      inputText.min = Number(msg)+1000;
+      if (inputText.value < inputText.min) {
+        inputText.value = inputText.min;
+      };
+    });
+  </script>
 </body>
-
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
-</script>
 
 <%- include('../partials/footer.ejs') %>

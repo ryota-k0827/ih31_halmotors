@@ -39,7 +39,8 @@
       type="number"
       value="<%= price %>"
       placeholder="<%= price %>"
-      required
+      step="1000"
+      readonly
     />
     <!-- <p>↓ログイン実装後に削除</p> -->
     <input
@@ -51,6 +52,25 @@
       required
     />
   </div>
-  <button button class="button1" type="submit">入札</button>
+  <button class="button1" type="submit">入札</button>
 </form>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socketio = io();
+  // サーバーから受信
+  socketio.on("s2c", (msg) => {
+    console.log(msg);
+    alert("価格が変更されました。");
+    let inputText = document.getElementById("price");
+    inputText.value = Number(msg) + 1000;
+  });
+
+  // サーバーへ送信
+  const form = document.getElementById("bidConfirm");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const price = document.getElementById("price").value;
+    socketio.emit("c2s", price);
+  });
+</script>
 <%- include('../partials/footer.ejs') %>
