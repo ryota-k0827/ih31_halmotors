@@ -27,6 +27,23 @@
               </form>
             <a href="/search/detail" class="inline-block py-1 px-3 text-gray-900 hover:text-gray-700 no-underline">絞り込み検索</a>
         </div>
+        <% if(locals.user) { %>
+        <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
+          <li>
+            <p>こんにちは、<%= (locals.user.name || "名無し") %>さん。</p>
+          </li>
+          <li>
+            <a href="/account/mypage" class="bg-gray-500 hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
+              マイページ
+            </a>
+          </li>
+          <li>
+            <a href="/account/logout" class="bg-black hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
+              ログアウト
+            </a>
+        </li>
+        </ul>
+        <% } else { %>
         <ul class="text-sm text-gray-700 list-none p-0 flex items-center">
             <li>
                 <a href="/account/login" class="bg-gray-500 hover:bg-text-gray-800 text-white ml-4 py-2 px-3">
@@ -39,5 +56,6 @@
                 </a>
             </li>
         </ul>
+        <% } %>
     </nav>
 </header>

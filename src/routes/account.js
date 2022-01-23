@@ -19,6 +19,12 @@ router.get("/mypage", authorize(PRIVILEGE.NORMAL), (req, res) => {
   res.render("./account/mypage.ejs");
 });
 
+// ログアウト処理
+router.get("/logout", (req, res, next) => {
+  req.logout();
+  res.redirect("/account/login");
+});
+
 // 退会ページ
 router.get("/", (req, res) => {
   res.render("./account/unsubscribe.ejs");
