@@ -15,13 +15,11 @@ router.post("/confirm/:id", authorize(PRIVILEGE.NORMAL), (req, res) => {
 
 // 入札完了
 router.post("/complete", authorize(PRIVILEGE.NORMAL), async (req, res, next) => {
-  // const date = new Date();
-  // let now_date = date.toLocaleString();
   let { listingId, price, customerId } = req.body;
 
   try {
     MySQLClient.executeQuery(await sql("INSERT_BID"), [listingId, customerId, price]);
-    res.render("./bid/bid-complete.ejs");
+    res.send("Success");
   } catch (err) {
     next(err);
   }

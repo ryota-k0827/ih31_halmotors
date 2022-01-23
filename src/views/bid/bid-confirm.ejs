@@ -20,12 +20,7 @@
     font-size: 30px;
   }
 </style>
-<form
-  id="bidConfirm"
-  action="/bid/complete"
-  method="POST"
-  class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
->
+<form id="bidConfirm" class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
   <input type="hidden" id="listingId" name="listingId" value="<%= listing_id %>" />
   <div class="text-center">
     <h1 class="my-4 font-medium">こちらの商品に入札します。</h1>
@@ -42,15 +37,7 @@
       step="1000"
       readonly
     />
-    <!-- <p>↓ログイン実装後に削除</p> -->
-    <input
-      name="customerId"
-      class="w-full py-2 px-3 text-gray-700 leading-normal rounded"
-      id="customerId"
-      type="number"
-      placeholder="customer.id"
-      required
-    />
+    <input name="customerId" id="customerId" type="hidden" value="<%= (locals.user.id) %>" />
   </div>
   <button class="button1" type="submit">入札</button>
 </form>
@@ -58,13 +45,6 @@
 <script>
   let pageId = document.getElementById("listingId").value;
   const socketio = io();
-  // サーバーから受信
-  socketio.on("s2c/" + pageId, (msg) => {
-    console.log(msg);
-    alert("価格が変更されました。");
-    let inputText = document.getElementById("price");
-    inputText.value = Number(msg) + 1000;
-  });
 
   // サーバーへ送信
   const form = document.getElementById("bidConfirm");
@@ -75,7 +55,36 @@
       pageId: pageId,
       price: price,
     };
-    socketio.emit("c2s", sendData);
+
+    // ajax
+    let values = {
+      listingId: document.getElementById("listingId").value,
+      price: document.getElementById("price").value,
+      customerId: document.getElementById("customerId").value,
+    };
+    $.ajax({
+      type: "POST",
+      data: values,
+      url: "/bid/complete",
+    })
+      .done((data) => {
+        socketio.emit("c2s", sendData);
+        console.log(data);
+        alert("入札完了しました。");
+        location.href = "/search/bid/" + values.listingId;
+      })
+      .fail((data) => {
+        console.log(data);
+        alert("入札に失敗しました。");
+      });
+  });
+
+  // サーバーから受信
+  socketio.on("s2c/" + pageId, (msg) => {
+    console.log(msg);
+    alert("価格が変更されました。");
+    let inputText = document.getElementById("price");
+    inputText.value = Number(msg) + 1000;
   });
 </script>
 <%- include('../partials/footer.ejs') %>
