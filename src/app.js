@@ -36,6 +36,9 @@ app.use("/signup", require("./routes/signup.js"));
 app.use("/unsubscribe", require("./routes/unsubscribe.js"));
 app.use("/search", require("./routes/search.js"));
 app.use("/bid", require("./routes/bid/bid.js"));
+// app.use("/mypage", require("./routes/mypage.js"));
+// app.use("/my_bidlist", require("./routes/my_bidlist.js"));
+// app.use("/my_buylist", require("./routes/my_buylist.js"));
 
 // Set application log.
 app.use(applicationlogger());
