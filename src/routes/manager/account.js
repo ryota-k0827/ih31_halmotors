@@ -13,7 +13,8 @@ router.post("/login", authenticate("manager"));
 
 // マイページ表示
 router.get("/mypage", adminAuthMiddleware, (req, res) => {
-  res.render("./manager/account/mypage.ejs");
+  // res.render("./manager/account/mypage.ejs");
+  res.send("マイページ");
 });
 
 // ログアウト処理

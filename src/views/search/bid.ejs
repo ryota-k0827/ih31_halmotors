@@ -46,9 +46,8 @@
 }
 </style>
 <body>
-
   <div class="top">
-    <img src="/public/img/<%= name %>.jpg">
+    <img class="object-contain" src="/public/img/<%= name %>.jpg">
     <div class="car_name">
       <h1><%= name %></h1>
       <h2 id="getPrice">現在の価格 <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
