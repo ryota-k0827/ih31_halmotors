@@ -69,9 +69,12 @@ VALUES("ミライース", "ダイハツ", "4.5", "4", "4", 2021, 5, "ミニバ�
 "フロア", "AT", "C", true, true, false, false, true, true, true, true, true, true, true, true, "すげーくるまやで", "ああああ");
 
 -- listing 
-INSERT INTO listing (car_id, start_price, date) VALUES(1, 800000, "2021/12/08");
-INSERT INTO listing (car_id, start_price, date) VALUES(2, 700000, "2021/12/05");
-INSERT INTO listing (car_id, start_price, date) VALUES(3, 1000000, "2021/12/02");
+INSERT INTO listing (car_id, start_price, date) VALUES(1, 800000, "2022/01/29");
+INSERT INTO listing (car_id, start_price, date) VALUES(2, 700000, "2022/01/29");
+INSERT INTO listing (car_id, start_price, date) VALUES(3, 1000000, "2022/01/29");
+INSERT INTO listing (car_id, start_price, date) VALUES(4, 800000, "2022/01/29");
+INSERT INTO listing (car_id, start_price, date) VALUES(5, 700000, "2022/01/29");
+INSERT INTO listing (car_id, start_price, date) VALUES(6, 1000000, "2022/01/29");
 
 -- bid 
 INSERT INTO bid (listing_id, person_id, price, date) VALUES(1, 3, 810000, "2021/12/08 15:21:31");
