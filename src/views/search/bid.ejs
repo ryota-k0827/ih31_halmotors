@@ -278,13 +278,13 @@
     let seconds, minutes;
     let time = document.getElementById("time");
     let sendButton = document.getElementById("sendButton");
+    let h2 = document.getElementById("getPrice");
+    let inputText = document.getElementById("price");
 
     // サーバーから受信
     const socketio = io();
     socketio.on("s2c/"+pageId, (msg) => {
       console.log(msg);
-      let h2 = document.getElementById("getPrice");
-      let inputText = document.getElementById("price");
       h2.innerText = "現在の価格: " + Number(msg).toLocaleString() + "円";
       inputText.min = Number(msg)+1000;
       if (inputText.value < inputText.min) {
@@ -297,6 +297,7 @@
       if (data === "0:00") {
         sendButton.disabled = true;
         sendButton.innerText = "終了";
+        inputText.disabled = true;
       };
     });
   </script>
