@@ -62,10 +62,10 @@
       <div class="car_name">
         <h1><%= name %></h1>
         <h2 id="getPrice">現在の価格: <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
-          <form action="/manager/listing/delete/<%= listing_id %>" method="POST">
+          <form id="deleteConfirm">
             <input type="hidden" id="name" name="name" value="<%= name %>" />
             <input type="hidden" id="listingId" name="listingId" value="<%= listing_id %>" />
-            <button id="sendButton" class="button1" type="submit">削除</button>
+            <button id="sendButton" class="button1" type="submit">出品取消</button>
           </form>
       </div>
     </div>  
@@ -276,6 +276,31 @@
             </p>
           </div>
     </div>
-      <%- include('../partials/footer.ejs') %>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+  <script>
+    const form = document.getElementById("deleteConfirm");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (confirm("確認: 出品を取り消します。")) {
+        // ajax
+        let listingId = document.getElementById("listingId").value;
+        $.ajax({
+          type: "POST",
+          data: null,
+          url: "/manager/listing/delete/" + listingId,
+        })
+          .done((data) => {
+            console.log(data);
+            alert("出品を取り消しました。");
+            location.href = "/manager/listing";
+          })
+          .fail((data) => {
+            console.log(data);
+            alert("失敗しました。");
+          });
+      }
+    });
+  </script>
   </body>
 </html>

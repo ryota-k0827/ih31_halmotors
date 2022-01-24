@@ -41,7 +41,8 @@ router.post("/delete/:id", adminAuthMiddleware, async (req, res, next) => {
   try {
     await MySQLClient.executeQuery(await sql("DELETE_LISTING_BY_ID"), `%${id}%`);
     // console.log(results);
-    res.redirect("/manager/listing");
+    // res.redirect("/manager/listing");
+    res.send("success");
   } catch (err) {
     next(err);
   }
