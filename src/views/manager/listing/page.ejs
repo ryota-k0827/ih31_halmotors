@@ -26,30 +26,49 @@
         margin-left: 30px;
         
       }
+      .button1{
+        font-size: 30px;
+        width: 500px;
+        background-color: rgb(253, 135, 135);
+        text-align: center;
+        border:  2px solid rgb(217, 112, 112);
+        border-radius: 0.25rem;
+      }
       .button2{
         padding-top: 8px;
         font-size: 30px;
         width: 500px;
         background-color: #f1eded;
         text-align: center;
-        border:  2px solid #000;
+        border:  2px solid rgb(119, 119, 119);
         height: 90px;
+        border-radius: 0.125rem;
       }
-    </style>
+      .input-text{
+        width: 500px;
+        height: 50px;
+        font-size: 30px;
+        margin-bottom: 20px;
+        border:  2px solid rgb(119, 119, 119);
+        border-radius: 0.125rem;
+      }
+      </style>      
   </head>
   <body>
     <%- include('../partials/navbar.ejs') %>
     <br>
     <div class="top">
-      <img src="/public/img/<%= name %>.jpg">
+      <img class="object-contain" src="/public/img/<%= name %>.jpg">
       <div class="car_name">
         <h1><%= name %></h1>
-        <h2>現在の価格 <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
-        <div class="button2">  
-          <h2>残り時間&nbsp;&nbsp;<br>00:00</h2>
-        </div>
+        <h2 id="getPrice">現在の価格: <%= flg=(bid.price)?Number(bid.price).toLocaleString():Number(start_price).toLocaleString(); %>円</h2>
+          <form action="/manager/listing/delete/<%= listing_id %>" method="POST">
+            <input type="hidden" id="name" name="name" value="<%= name %>" />
+            <input type="hidden" id="listingId" name="listingId" value="<%= listing_id %>" />
+            <button id="sendButton" class="button1" type="submit">削除</button>
+          </form>
       </div>
-    </div>
+    </div>  
     <div class="detail">
       <div class="space-y-5">
         <!-- 車両評価 -->
@@ -257,6 +276,6 @@
             </p>
           </div>
     </div>
-    <%- include('../partials/footer.ejs') %>
+      <%- include('../partials/footer.ejs') %>
   </body>
 </html>

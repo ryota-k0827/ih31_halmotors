@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { MySQLClient, sql } = require("../../lib/database/client.js");
+const { adminAuthMiddleware } = require("../../lib/security/accesscontrol.js");
 
 // オークション一覧
-router.get("/", async (req, res, next) => {
+router.get("/", adminAuthMiddleware, async (req, res, next) => {
   let results;
 
   try {
@@ -15,7 +16,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // 車両詳細ページ
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", adminAuthMiddleware, async (req, res, next) => {
   let id = req.params.id;
 
   Promise.all([
@@ -31,6 +32,19 @@ router.get("/:id", async (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+});
+
+// 出品削除
+router.post("/delete/:id", adminAuthMiddleware, async (req, res, next) => {
+  let id = req.params.id;
+
+  try {
+    await MySQLClient.executeQuery(await sql("DELETE_LISTING_BY_ID"), `%${id}%`);
+    // console.log(results);
+    res.redirect("/manager/listing");
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
