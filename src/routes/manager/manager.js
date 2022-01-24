@@ -9,6 +9,7 @@ router.get("/", adminAuthMiddleware, (req, res) => {
 
 // Dynamic resources rooting.
 router.use("/listing", require("./listing.js"));
+router.use("/buy", require("./buy.js"));
 router.use("/car", require("./car.js"));
 router.use("/account", require("./account.js"));
 

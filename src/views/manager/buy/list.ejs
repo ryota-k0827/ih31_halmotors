@@ -1,11 +1,11 @@
-<!--オークション一覧表示画面（クライアント側）-->
+<!--オークション一覧表示画面-->
 <!-- jQueryのリンク　../../public/js/jquety.min.js-->
 
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <%- include('../partials/header.ejs') %>
-    <title>オークション一覧</title>
+    <title>管理者:落札一覧</title>
     <style>
       .title{
           font-size: larger;
@@ -36,7 +36,7 @@
     <%- include('../partials/navbar.ejs') %>
     <br>
     <div class="title">
-        <h1>オークション一覧画面</h1>
+        <h1>落札一覧</h1>
     </div>
 
     <div class="pager">
@@ -45,15 +45,21 @@
       -->
       <% for (let item of results) { %>
         <div class="w-full md:w-1/2 lg:w-1/3 flex flex-col mb-8 px-3" id="pagenation" >
-            <a href="/manager/listing/<%= item.id %>">
+            <a href="/manager/buy/<%= item.buy_id %>">
                 <div class="overflow-hidden bg-white rounded-lg shadow hover:shadow-raised hover:translateY-2px transition">
-                  <a href="/manager/listing/<%= item.id %>">
-                    <img class="w-full" src="/public/img/<%= item.name %>.jpg" id="target"  alt="Sunset in the mountains">
+                  <a href="/manager/buy/<%= item.buy_id %>">
+                    <img class="w-full" src="/public/img/<%= item.car_name %>.jpg" id="target"  alt="Sunset in the mountains">
                     <div class="p-6 flex flex-col justify-between ">
-                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="carName"><%= item.name %></h3>
-                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="date">開始日時: <%= moment(item.date).format("YYYY/MM/DD HH:mm") %></h3>
-                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="start_price">開始価格: <%= Number(item.start_price).toLocaleString() %>円</h3>
-                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="flg"><%= item.flg %></h3>
+                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="carName"><%= item.car_name %></h3>
+                        <% if(item.buy_status === "取引終了") { %>
+                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="date">取引終了日: <%= moment(item.buy_date).format("YYYY/MM/DD") %></h3>
+                        <% } %>
+                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="start_price">販売額: <%= Number(item.bid_price).toLocaleString() %>円</h3>
+                        <% if(item.buy_penalty > 0){ %>
+                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="flg"><%= item.buy_status %>（ペナルティ有）</h3>
+                        <% } else { %>
+                        <h3 class="font-medium text-gray-900 mb-4 leading-normal" id="flg"><%= item.buy_status %></h3>
+                        <% } %>
                         <p class="inline-flex items-center">
                         </p>
                     </div>
@@ -65,7 +71,7 @@
 
     <script>
       //画像ソース
-      target.src = "/img/escalade.png";
+      // target.src = "/img/escalade.png";
       // var img = document.getElementById('target');
       // target.setAttribute('src','/img/escalade.png');
 
