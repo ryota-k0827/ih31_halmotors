@@ -16,9 +16,8 @@ const httpSocket = require("http").Server(app);
 const ioSocket = require("socket.io")(httpSocket);
 
 // オークションタイマー
-let hours = 10;
 let minutes = 0;
-let seconds = 0;
+let seconds = 20;
 
 // Express Settings.
 app.set("view engine", "ejs");
@@ -73,10 +72,30 @@ app.use(applicationlogger());
 // Execute web application.
 httpSocket.listen(appconfig.PORT, () => {
   logger.application.info(`Application listening at ${appconfig.PORT}`);
+
+  // タイマー処理
+  let timer = setInterval(() => {
+    seconds--;
+    if (seconds < 0) {
+      seconds = 59;
+      minutes--;
+    }
+    if (minutes < 0) {
+      minutes = 0;
+      seconds = 0;
+      clearInterval(timer);
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    // console.log(`${minutes}:${seconds}`);
+    ioSocket.emit("timer", `${minutes}:${seconds}`);
+  }, 1000);
 });
 
 ioSocket.on("connection", (socket) => {
   logger.application.info("A client connected.");
+
   // ブラウザから受信
   socket.on("c2s", (data) => {
     logger.application.info("入札: " + data.price + "円");
