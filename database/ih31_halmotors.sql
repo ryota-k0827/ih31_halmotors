@@ -19,7 +19,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `card` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `person_id` int NOT NULL COMMENT '顧客ID',
+  `user_id` int NOT NULL COMMENT '顧客ID',
   `number` varchar(255) NOT NULL COMMENT 'カード番号',
   `expiration_date` date NOT NULL COMMENT '有効期限',
   `security_code` int NOT NULL COMMENT 'セキュリティコード'
@@ -29,14 +29,14 @@ CREATE TABLE `listing` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `car_id` int NOT NULL COMMENT '車両ID',
   `start_price` int NOT NULL COMMENT '開始価格',
-  `date` date NOT NULL COMMENT '出品日時',
+  `date` datetime NOT NULL COMMENT '出品日時',
   `flg` ENUM('出品中','終了') NOT NULL DEFAULT '出品中' COMMENT '出品状態'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='出品';
 
 CREATE TABLE `bid` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `listing_id` int NOT NULL COMMENT '出品ID',
-  `person_id` int NOT NULL COMMENT '顧客ID',
+  `user_id` int NOT NULL COMMENT '顧客ID',
   `price` int NOT NULL COMMENT '入札価格',
   `date` datetime NOT NULL COMMENT '入札日時'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='入札';
@@ -45,8 +45,10 @@ CREATE TABLE `buy` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `bid_id` int NOT NULL COMMENT '入札ID',
   `memo` varchar(255) NOT NULL COMMENT '取引メモ',
-  `date` datetime NOT NULL COMMENT '取引日時',
+  `date` datetime DEFAULT NULL COMMENT '取引完了日時',
   `status` ENUM ('取引中', '取引終了') NOT NULL DEFAULT '取引中' COMMENT '取引状態',
+  `pay_status` ENUM ('未入金', '受領') NOT NULL DEFAULT '未入金' COMMENT '入金状態',
+  `pay_type` ENUM ('未選択', 'カード', '振込', '一括請求') NOT NULL DEFAULT '未選択' COMMENT '入金方法',
   `penalty` int DEFAULT 0 COMMENT 'ペナルティ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='落札';
 
@@ -92,13 +94,13 @@ CREATE TABLE `car` (
 
 CREATE TABLE `purchase` (
   `car_id` int PRIMARY KEY COMMENT '車両ID',
-  `employee_id` int NOT NULL COMMENT '従業員ID',
+  `user_id` int NOT NULL COMMENT '従業員ID',
   `purchase_price` int NOT NULL COMMENT '仕入価格'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='仕入管理';
 
 ALTER TABLE `bid` ADD FOREIGN KEY (`listing_id`) REFERENCES `listing` (`id`);
 
-ALTER TABLE `bid` ADD FOREIGN KEY (`person_id`) REFERENCES `user` (`id`);
+ALTER TABLE `bid` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 -- ALTER TABLE `bid` ADD FOREIGN KEY (`id`) REFERENCES `buy` (`bid_id`);
 ALTER TABLE `buy` ADD FOREIGN KEY (`bid_id`) REFERENCES `bid` (`id`);
@@ -109,6 +111,6 @@ ALTER TABLE `listing` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 -- ALTER TABLE `car` ADD FOREIGN KEY (`id`) REFERENCES `purchase` (`car_id`);
 ALTER TABLE `purchase` ADD FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 
-ALTER TABLE `purchase` ADD FOREIGN KEY (`employee_id`) REFERENCES `user` (`id`);
+ALTER TABLE `purchase` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `card` ADD FOREIGN KEY (`person_id`) REFERENCES `user` (`id`);
+ALTER TABLE `card` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
