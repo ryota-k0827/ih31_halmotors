@@ -25,16 +25,16 @@ INSERT INTO user( name, mail, password, category, postal_code, address1, address
 INSERT INTO user( name, mail, password, category, postal_code, address1, address2, address3, tel, birthday, del_flg) VALUES ( "飯塚 昌", "emp10@sample.com", "pass", 3, '547-1111', "大阪府", "大阪市北区", "町田町1-1-1", "090-8416-8638", "1992/3/16", FALSE) ;
 
 -- card
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(1, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(2, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(3, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(4, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(5, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(6, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(7, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(8, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(9, "0987654321091234", "2024/03/01", 313);
-INSERT INTO card( person_id, number, expiration_date, security_code) VALUES(10, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(1, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(2, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(3, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(4, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(5, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(6, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(7, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(8, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(9, "0987654321091234", "2024/03/01", 313);
+INSERT INTO card( user_id, number, expiration_date, security_code) VALUES(10, "0987654321091234", "2024/03/01", 313);
 
 -- car
 INSERT INTO car(name, maker, evaluation, outer_evaluation, inner_evaluation, model_year, door, shape, grade, history, model, engine_size, fuel_type, inspection_day, mileage,outer_color, inner_color, color_number, identifier, shift_type, gear_type,ac_type, ps, pw, aw, sr, tire, leather_sheet, ab, tv, navi, rear_spo, manual, warranty, other_option, information)
@@ -77,13 +77,20 @@ INSERT INTO listing (car_id, start_price, date) VALUES(5, 700000, "2022/01/29");
 INSERT INTO listing (car_id, start_price, date) VALUES(6, 1000000, "2022/01/29");
 
 -- bid 
-INSERT INTO bid (listing_id, person_id, price, date) VALUES(1, 3, 810000, "2021/12/08 15:21:31");
-INSERT INTO bid (listing_id, person_id, price, date) VALUES(2, 3, 850000, "2021/12/08 15:22:31");
-INSERT INTO bid (listing_id, person_id, price, date) VALUES(3, 3, 890000, "2021/12/08 15:23:31");
-INSERT INTO bid (listing_id, person_id, price, date) VALUES(1, 3, 1000000, "2021/12/08 15:25:58");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(1, 1, 810000, "2021/12/08 15:21:31");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(2, 2, 850000, "2021/12/08 15:22:31");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(3, 3, 890000, "2021/12/08 15:23:31");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(4, 4, 1000000, "2021/12/08 15:25:58");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(5, 5, 80000, "2021/12/08 15:27:31");
+INSERT INTO bid (listing_id, user_id, price, date) VALUES(6, 6, 1000000, "2021/12/08 15:29:58");
 
--- buy 
-INSERT INTO buy (bid_id, memo, date, status) VALUES(1, "100万になったｗｗ", "2021/12/08 15:25:58", "取引中");
+-- buy
+INSERT INTO buy (bid_id, memo, date, status, pay_status, pay_type) VALUES(1, "100万になったｗｗ", "2021/12/08 15:25:58", "取引終了", "受領", "振込");
+INSERT INTO buy (bid_id, memo, date, status, pay_status, pay_type) VALUES(2, "hoge", "2021/12/08 15:25:58", "取引終了", "受領", "カード");
+INSERT INTO buy (bid_id, memo, date, status, pay_status, pay_type) VALUES(3, "hoge", "2021/12/08 15:25:58", "取引終了", "受領", "振込");
+INSERT INTO buy (bid_id, memo, date, status, pay_status, pay_type) VALUES(4, "hoge", "2021/12/08 15:25:58", "取引終了", "受領", "一括請求");
+INSERT INTO buy (bid_id, memo, status, pay_status, pay_type) VALUES(5, "hoge", "取引中", "未入金", "未選択");
+INSERT INTO buy (bid_id, memo, status, pay_status, pay_type) VALUES(6, "hogehoge", "取引中", "未入金", "振込");
 
 -- purchase
-INSERT INTO purchase (car_id, employee_id, purchase_price) VALUES(1, 16, 1000000);
+INSERT INTO purchase (car_id, user_id, purchase_price) VALUES(1, 16, 1000000);
