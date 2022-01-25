@@ -40,6 +40,16 @@ router.get("/buy", authorize(PRIVILEGE.NORMAL), (req, res) => {
   res.render("./account/buylist.ejs");
 });
 
+// カード登録ページ
+router.get("/card/regist", authorize(PRIVILEGE.NORMAL), (req, res) => {
+  res.render("./account/credit.ejs");
+});
+
+// 口座登録ページ
+router.get("/payment/regist", authorize(PRIVILEGE.NORMAL), (req, res) => {
+  res.render("./account/payment.ejs");
+});
+
 // ログアウト処理
 router.get("/logout", (req, res, next) => {
   req.logout();

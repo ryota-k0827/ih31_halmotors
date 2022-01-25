@@ -17,8 +17,8 @@ const httpSocket = require("http").Server(app);
 const ioSocket = require("socket.io")(httpSocket);
 
 // オークションタイマー
-let minutes = 3;
-let seconds = 0;
+let minutes = 0;
+let seconds = 10;
 
 // Express Settings.
 app.set("view engine", "ejs");
