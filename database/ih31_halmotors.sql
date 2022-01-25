@@ -29,7 +29,7 @@ CREATE TABLE `listing` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `car_id` int NOT NULL COMMENT '車両ID',
   `start_price` int NOT NULL COMMENT '開始価格',
-  `date` datetime NOT NULL COMMENT '出品日時',
+  `date` date NOT NULL COMMENT '出品日',
   `flg` ENUM('出品中','終了') NOT NULL DEFAULT '出品中' COMMENT '出品状態'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='出品';
 

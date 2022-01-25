@@ -6,9 +6,14 @@ const {
   // accessPage,
 } = require("../lib/security/accesscontrol.js");
 
-// 新規登録画面
+// 新規登録ページ
 router.get("/signup", (req, res) => {
   res.render("./account/signup.ejs");
+});
+
+// 新規登録処理
+router.post("/signup", (req, res) => {
+  res.render("./account/signup-complete.ejs");
 });
 
 // ログインページ

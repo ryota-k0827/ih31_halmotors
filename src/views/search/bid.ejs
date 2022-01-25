@@ -24,9 +24,10 @@
 .button1{
   font-size: 30px;
   width: 500px;
-  background-color: rgb(61, 122, 192);
+  /* background-color: rgb(61, 122, 192); */
   text-align: center;
-  border:  2px solid rgb(46, 93, 146);
+  /* border:  2px solid rgb(46, 93, 146); */
+  border:  2px solid;
   border-radius: 0.25rem;
 }
 .button2{
@@ -281,6 +282,13 @@
     let h2 = document.getElementById("getPrice");
     let inputText = document.getElementById("price");
 
+    sendButton.disabled = true;
+    sendButton.innerText = "終了";
+    inputText.disabled = true;
+    sendButton.style.backgroundColor = "#ccc";
+    sendButton.style.borderColor = "#ccc";
+
+
     // サーバーから受信
     const socketio = io();
     socketio.on("s2c/"+pageId, (msg) => {
@@ -297,7 +305,15 @@
       if (data === "0:00") {
         sendButton.disabled = true;
         sendButton.innerText = "終了";
+        sendButton.style.backgroundColor = "#ccc";
+        sendButton.style.borderColor = "#ccc";
         inputText.disabled = true;
+      } else {
+        sendButton.disabled = false;
+        sendButton.innerText = "入札";
+        inputText.disabled = false;
+        sendButton.style.backgroundColor = "rgb(46, 93, 146)";
+        sendButton.style.borderColor = "rgb(61, 122, 192)";
       };
     });
   </script>

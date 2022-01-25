@@ -1,0 +1,5 @@
+SELECT
+  *
+FROM
+  listing
+WHERE date = DATE_ADD(CURRENT_DATE, INTERVAL 4 DAY)

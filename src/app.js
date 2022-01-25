@@ -2,6 +2,7 @@ const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
 const path = require("path");
+const auctionSchedule = require("./lib/cron/croncontrol.js");
 const logger = require("./lib/log/logger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
@@ -16,8 +17,8 @@ const httpSocket = require("http").Server(app);
 const ioSocket = require("socket.io")(httpSocket);
 
 // オークションタイマー
-let minutes = 0;
-let seconds = 20;
+let minutes = 3;
+let seconds = 0;
 
 // Express Settings.
 app.set("view engine", "ejs");
@@ -72,6 +73,9 @@ app.use(applicationlogger());
 // Execute web application.
 httpSocket.listen(appconfig.PORT, () => {
   logger.application.info(`Application listening at ${appconfig.PORT}`);
+
+  // オークションタイマー
+  // auctionSchedule();
 
   // タイマー処理
   let timer = setInterval(() => {

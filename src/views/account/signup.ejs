@@ -2,115 +2,185 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
+  <head>
     <%- include('../partials/header.ejs') %>
-        <title>新規登録画面</title>
-</head>
-<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+    <title>新規登録画面</title>
+  </head>
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
 
-<body>
-    <form action="/manager/car/regist/confirm" method="POST"
-        class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8">
-        <!-- 名前 -->
-        <p>名前</p>
+  <body>
+    <form
+      action="/account/signup"
+      method="POST"
+      class="font-sans text-sm rounded w-full max-w-md mx-auto my-8 px-8 pt-6 pb-8"
+    >
+      <!-- 名前 -->
+      <p>名前</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="name"
+          type="text"
+          name="name"
+          placeholder="名前を入力してください"
+          required
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="name"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
+      <!-- パスワード -->
+      <p>パスワード</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          id="password"
+          type="password"
+          name="password"
+          placeholder="パスワードを入力してください"
+          required
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="password"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
+      <!-- 顧客区分 -->
+      <p>顧客区分</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <select
+          name="category"
+          class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        >
+          <option>顧客区分を選択</option>
+          <option value="0">個人</option>
+          <option value="１">法人</option>
+        </select>
+      </div>
+      <!-- 住所 -->
+      <p>郵便番号※ハイフンなし</p>
+      <div>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="name" type="text" name="name"
-                placeholder="名前を入力してください" required />
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="name">
-            </label>
-            <p id="null"></p>
+          <!-- ▼郵便番号入力フィールド(7桁) -->
+          <input
+            id="postal_code"
+            class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+            type="text"
+            name="postal_code"
+            maxlength="8"
+            onKeyUp="AjaxZip3.zip2addr(this,'','addr01','addr02');"
+            placeholder="郵便番号７桁ハイフン無しで入力してください"
+            required
+          />
         </div>
-        <!-- パスワード -->
-        <p>パスワード</p>
+        <p>住所1</p>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <input class="w-full py-2 px-3 text-black-700 leading-normal rounded" id="password" type="password"
-                name="password" placeholder="パスワードを入力してください" required />
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="password">
-            </label>
-            <p id="null"></p>
+          <!-- ▼住所入力フィールド(都道府県) -->
+          <input
+            id="address1"
+            class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+            type="text"
+            name="addr01"
+            placeholder="住所１自動入力"
+            required
+          />
         </div>
-        <!-- 顧客区分 -->
-        <p>顧客区分</p>
+        <p>住所2</p>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <select name="category"
-                class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                <option>顧客区分を選択</option>
-                <option value="0">個人</option>
-                <option value="１">法人</option>
-            </select>
+          <!-- ▼住所入力フィールド(都道府県以降の住所) -->
+          <input
+            id="address2"
+            class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+            type="text"
+            name="addr02"
+            placeholder="住所2自動入力"
+            required
+          />
         </div>
-        <!-- 住所 -->
-        <p>郵便番号※ハイフンなし</p>
-        <div>
-            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <!-- ▼郵便番号入力フィールド(7桁) -->
-                <input id="postal_code" class="w-full py-2 px-3 text-black-700 leading-normal rounded" type="text"
-                    name="postal_code" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr01','addr02');"
-                    placeholder="郵便番号７桁ハイフン無しで入力してください" required>
-            </div>
-            <p>住所1</p>
-            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <!-- ▼住所入力フィールド(都道府県) -->
-                <input id="address1" class="w-full py-2 px-3 text-black-700 leading-normal rounded" type="text"
-                    name="addr01" placeholder="住所１自動入力" required>
-            </div>
-            <p>住所2</p>
-            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <!-- ▼住所入力フィールド(都道府県以降の住所) -->
-                <input id="address2" class="w-full py-2 px-3 text-black-700 leading-normal rounded" type="text"
-                    name="addr02" placeholder="住所2自動入力" required>
-            </div>
-            <p>住所3</p>
-            <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-                <!-- ▼住所入力フィールド(都道府県以降の住所) -->
-                <input id="address3" name="addr3" class="w-full py-2 px-3 text-black-700 leading-normal rounded" type="text"
-                    placeholder="例:◯丁目◯番地◯号◯◯マンション◯号室" required>
-            </div>
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="postal_code">
-            </label>
-            <p id="null"></p>
-        </div>
-
-
-        <!-- 電話番号 -->
-        <p>電話番号※ハイフン無し</p>
+        <p>住所3</p>
         <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <input id="tel" typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded" type="tel" name="tel"
-                placeholder="電話番号を入力してください" required />
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="tel">
-            </label>
-            <p id="null"></p>
+          <!-- ▼住所入力フィールド(都道府県以降の住所) -->
+          <input
+            id="address3"
+            name="addr3"
+            class="w-full py-2 px-3 text-black-700 leading-normal rounded"
+            type="text"
+            placeholder="例:◯丁目◯番地◯号◯◯マンション◯号室"
+            required
+          />
         </div>
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="postal_code"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
 
+      <!-- 電話番号 -->
+      <p>電話番号※ハイフン無し</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          id="tel"
+          typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          type="tel"
+          name="tel"
+          placeholder="電話番号を入力してください"
+          required
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="tel"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
 
-        <!-- mail -->
-        <p>メールアドレス</p>
-        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <input id="mail" typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded" type="email"
-                name="email" placeholder="例:xxxx@xxxx.xxx" required />
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="email">
-            </label>
-            <p id="null"></p>
-        </div>
+      <!-- mail -->
+      <p>メールアドレス</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          id="mail"
+          typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          type="email"
+          name="email"
+          placeholder="例:xxxx@xxxx.xxx"
+          required
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="email"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
 
-        <!-- 生年月日 -->
-        <p>生年月日</p>
-        <div class="relative border rounded mb-4 shadow appearance-none label-floating">
-            <input id="birthday" typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded" type="date"
-                name="date"/>
-            <label class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="date">
-            </label>
-            <p id="null"></p>
-        </div>
+      <!-- 生年月日 -->
+      <p>生年月日</p>
+      <div class="relative border rounded mb-4 shadow appearance-none label-floating">
+        <input
+          id="birthday"
+          typeclass="w-full py-2 px-3 text-black-700 leading-normal rounded"
+          type="date"
+          name="date"
+        />
+        <label
+          class="absolute block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal"
+          for="date"
+        >
+        </label>
+        <p id="null"></p>
+      </div>
 
-
-
-        <div class="flex items-center justify-between">
-            <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">登録</button>
-        </div>
+      <div class="flex items-center justify-between">
+        <button class="bg-black hover:bg-black text-white py-2 px-4" type="submit">登録</button>
+      </div>
     </form>
     <%- include('../partials/footer.ejs') %>
-</body>
-
+  </body>
 </html>
