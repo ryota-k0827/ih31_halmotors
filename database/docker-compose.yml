@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: ./mysql/dockerfile
+    platform: linux/x86_64
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/sql/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql # 起動時に実行するsqlファイル
+      - ./mysql/password-root:/password-root  # パスワードが記述されたファイル
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /password-root   # パスワードが記述されたファイルのパスを指定
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes' # rootパスワードを無効化
+      TZ: Japan
+    ports:
+      - 3306:3306
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - 8000:80
+    depends_on:
+      - mysql
+    restart: always
+
+volumes:
+  db-data:
