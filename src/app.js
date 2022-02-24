@@ -2,7 +2,7 @@ const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
 const path = require("path");
-const auctionSchedule = require("./lib/cron/croncontrol.js");
+// const auctionSchedule = require("./lib/cron/croncontrol.js");
 const logger = require("./lib/log/logger.js");
 const accesslogger = require("./lib/log/accesslogger.js");
 const applicationlogger = require("./lib/log/applicationlogger.js");
@@ -18,7 +18,7 @@ const ioSocket = require("socket.io")(httpSocket);
 
 // オークションタイマー
 let minutes = 0;
-let seconds = 10;
+let seconds = 15;
 
 // Express Settings.
 app.set("view engine", "ejs");
