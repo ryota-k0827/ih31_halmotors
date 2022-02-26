@@ -1,4 +1,4 @@
-const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const IS_PRODUCTION = process.env.NODE_ENV === "production"; // https通信時のみクッキーidを生成
 const appconfig = require("./config/application.config.js");
 const dbconfig = require("./config/mysql.config.js");
 const path = require("path");
