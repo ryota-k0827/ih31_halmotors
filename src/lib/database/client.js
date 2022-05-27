@@ -3,13 +3,13 @@ const { sql } = require("@garafu/mysql-fileloader")({ root: path.join(__dirname,
 const pool = require("./pool");
 
 const MySQLClient = {
-  executeQuery: async function(query, values) {
+  executeQuery: async function (query, values) {
     let results = await pool.executeQuery(query, values);
     return results;
-  }
+  },
 };
 
 module.exports = {
   MySQLClient,
-  sql
+  sql,
 };
